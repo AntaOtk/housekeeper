@@ -1,14 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-        <style name="Digit">
-            <item name="android:layout_width">50dp</item>
-            <item name="android:layout_height">50dp</item>
-            <item name="android:padding">10dp</item>
-            <item name="android:textColor">#FFF</item>
-            <item name="android:textStyle">bold</item>
-            <item name="android:gravity">center</item>
-            <item name="android:textSize">20sp</item>
-            <item name="android:background">@color/lila</item>
-        </style>
+
+    <style name="Digit">
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textColor">#FFF</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:background">@color/lila</item>
+    </style>
+
+    <style name="CategoryText">
+        <item name="android:textColor">?attr/colorOnSecondary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:padding">12dp</item>
+    </style>
+
+    <style name="EditTextStyle">
+        <item name="android:background">@color/light_gray</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:maxLength">30</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textColorHint">@color/gray</item>
+
+
+
+    </style>
+
 
 </resources>

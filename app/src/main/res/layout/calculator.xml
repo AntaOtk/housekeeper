@@ -10,27 +10,76 @@
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/leftBorder"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="16dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.10"/>
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/rigthBorder"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="16dp"
+        android:id="@+id/rightBorder"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.90" />
+
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/arrow_back"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/leftBorder"
+        />
+
+    <TextView
+        android:id="@+id/fromAccount"
+        style="@style/CategoryText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toEndOf="@id/leftBorder"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/arrow"
+        android:text="account"/>
+
+    <ImageView
+        android:id="@+id/arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/arrow_right"
+        app:layout_constraintStart_toEndOf="@id/fromAccount"
+        app:layout_constraintTop_toTopOf="@id/fromAccount"
+        app:layout_constraintBottom_toBottomOf="@id/fromAccount"
+        app:layout_constraintEnd_toStartOf="@id/toAccount"/>
+
+    <TextView
+        android:id="@+id/toAccount"
+        style="@style/CategoryText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/arrow"
+        app:layout_constraintBaseline_toBaselineOf="@id/fromAccount"
+        app:layout_constraintEnd_toStartOf="@id/rightBorder"
+        android:text="category"/>
 
     <EditText
         android:id="@+id/editTextCount"
-        android:layout_width="match_parent"
+        style="@style/EditTextStyle"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/white"
         android:layout_marginBottom="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/button1"/>
+        android:background="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/button1"
+        app:layout_constraintEnd_toStartOf="@id/rightBorder"
+        app:layout_constraintStart_toEndOf="@id/leftBorder"
+        app:layout_constraintTop_toBottomOf="@id/fromAccount"
+        android:inputType="text"
+        android:maxLength="30"
+        android:maxLines="1"
+        android:gravity="top|end"
+        />
 
     <TextView
         android:id="@+id/button1"
@@ -38,7 +87,7 @@
         android:layout_marginBottom="10dp"
         android:text="1"
         app:layout_constraintBottom_toTopOf="@id/button4"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@id/leftBorder" />
 
     <TextView
         android:id="@+id/button2"
@@ -62,7 +111,7 @@
         android:layout_marginBottom="10dp"
         android:text="4"
         app:layout_constraintBottom_toTopOf="@id/button7"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@id/button1" />
 
 
     <TextView
@@ -88,7 +137,7 @@
         android:layout_marginTop="10dp"
         android:text="7"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@id/button1" />
 
     <TextView
         android:id="@+id/button8"
@@ -105,5 +154,30 @@
         android:text="9"
         app:layout_constraintBaseline_toBaselineOf="@id/button7"
         app:layout_constraintStart_toEndOf="@id/button8" />
+
+
+    <TextView
+        android:id="@+id/buttonPlus"
+        style="@style/Digit"
+        android:layout_marginStart="10dp"
+        android:text="+"
+        app:layout_constraintBaseline_toBaselineOf="@id/button3"
+        app:layout_constraintStart_toEndOf="@id/button3" />
+
+    <TextView
+        android:id="@+id/buttonMinus"
+        style="@style/Digit"
+        android:layout_marginStart="10dp"
+        android:text="-"
+        app:layout_constraintBaseline_toBaselineOf="@id/button6"
+        app:layout_constraintStart_toEndOf="@id/button3" />
+
+    <TextView
+        android:id="@+id/buttonEqual"
+        style="@style/Digit"
+        android:layout_marginStart="10dp"
+        android:text="="
+        app:layout_constraintBaseline_toBaselineOf="@id/button9"
+        app:layout_constraintStart_toEndOf="@id/button3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

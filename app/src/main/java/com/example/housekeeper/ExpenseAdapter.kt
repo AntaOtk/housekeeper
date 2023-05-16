@@ -1,10 +1,12 @@
 package com.example.housekeeper
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class ExpenseAdapter(
@@ -45,7 +47,33 @@ class ExpenseAdapter(
         private val btn = itemView.findViewById<ImageView>(R.id.addButton)
 
         fun bind() {
+            btn.setOnClickListener {
+                val displayIntent = Intent(it.context, CategoryConstructor::class.java)
+                it.context.startActivity(displayIntent)
+            }
 
+
+        }
+    }
+
+    inner class ExpenseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+
+        private val icon = itemView.findViewById<ImageView>(R.id.iconGroup)
+        private val name = itemView.findViewById<TextView>(R.id.nameGroup)
+        private val sum = itemView.findViewById<TextView>(R.id.sumGroup)
+
+
+        fun bind(model: Expense) {
+            name.text = model.name
+            sum.text = "%.2f".format(model.sum)
+            icon.background.setTint(itemView.context.getColor(model.color))
+            icon.setImageResource(model.image)
+
+            icon.setOnClickListener {
+                val displayIntent = Intent(it.context, Calculator::class.java)
+                it.context.startActivity(displayIntent)
+            }
 
         }
     }
