@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         category.layoutManager = GridLayoutManager(this, 4, GridLayoutManager.VERTICAL, false)
 
         category.adapter = ExpenseAdapter(this,expenses)
-        account.adapter = ExpenseAdapter(this,accounts)
+        account.adapter = AccountAdapter(this,accounts)
     }
 
     val accounts = listOf<Expense>(

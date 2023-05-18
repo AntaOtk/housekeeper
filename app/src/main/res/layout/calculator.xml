@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#D4D7D9"
-    android:padding="10dp"
     tools:ignore="HardcodedText">
 
     <androidx.constraintlayout.widget.Guideline
@@ -134,9 +133,9 @@
     <TextView
         android:id="@+id/button7"
         style="@style/Digit"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:text="7"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/buttonPoint"
         app:layout_constraintStart_toStartOf="@id/button1" />
 
     <TextView
@@ -157,6 +156,30 @@
 
 
     <TextView
+        android:id="@+id/buttonPoint"
+        style="@style/Digit"
+        android:layout_marginBottom="10dp"
+        android:text="."
+        app:layout_constraintBottom_toTopOf="@id/bottomView"
+        app:layout_constraintStart_toStartOf="@id/button1" />
+
+    <TextView
+        android:id="@+id/buttonZero"
+        style="@style/Digit"
+        android:layout_marginStart="10dp"
+        android:text="0"
+        app:layout_constraintBaseline_toBaselineOf="@id/buttonPoint"
+        app:layout_constraintStart_toEndOf="@id/buttonPoint" />
+
+    <TextView
+        android:id="@+id/buttonBack"
+        style="@style/Digit"
+        android:layout_marginStart="10dp"
+        android:text="_"
+        app:layout_constraintBaseline_toBaselineOf="@id/buttonZero"
+        app:layout_constraintStart_toEndOf="@id/buttonZero" />
+
+    <TextView
         android:id="@+id/buttonPlus"
         style="@style/Digit"
         android:layout_marginStart="10dp"
@@ -170,14 +193,25 @@
         android:layout_marginStart="10dp"
         android:text="-"
         app:layout_constraintBaseline_toBaselineOf="@id/button6"
-        app:layout_constraintStart_toEndOf="@id/button3" />
+        app:layout_constraintStart_toEndOf="@id/button6" />
 
     <TextView
-        android:id="@+id/buttonEqual"
+        android:id="@+id/buttonEquels"
         style="@style/Digit"
         android:layout_marginStart="10dp"
         android:text="="
         app:layout_constraintBaseline_toBaselineOf="@id/button9"
-        app:layout_constraintStart_toEndOf="@id/button3" />
+        app:layout_constraintStart_toEndOf="@id/button9" />
 
+    <TextView
+        android:id="@+id/bottomView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/size_category"
+        android:background="?attr/colorSecondaryVariant"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/app_name"
+        android:textColor="@color/white"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
