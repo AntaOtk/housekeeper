@@ -1,4 +1,4 @@
-package com.example.housekeeper
+package com.example.housekeeper.domain.model
 
 
 

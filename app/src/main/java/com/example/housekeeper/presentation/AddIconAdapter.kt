@@ -1,10 +1,11 @@
-package com.example.housekeeper
+package com.example.housekeeper.presentation
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.housekeeper.R
 
 class AddIconAdapter (
     private val icons: List<Int>) : RecyclerView.Adapter<AddIconViewHolder>() {
@@ -26,11 +27,7 @@ class AddIconViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
 
     fun bind(item : Int){
         icon.setImageResource(item)
-
         icon.setOnClickListener {
-
         }
-
-
     }
 }

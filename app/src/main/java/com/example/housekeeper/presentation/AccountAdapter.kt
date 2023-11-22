@@ -1,39 +1,39 @@
-package com.example.housekeeper
+package com.example.housekeeper.presentation
 
 import android.content.ClipData
 import android.content.ClipDescription
-import android.content.Context
-import android.content.Intent
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Point
 import android.graphics.drawable.ColorDrawable
-import android.view.DragEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.housekeeper.R
+import com.example.housekeeper.domain.model.Expense
 
 class AccountAdapter(
-    private val mContext: Context,
-    private val category: List<Expense>
+    private val category: List<Expense>,
+    private val addAccount: () -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
             R.layout.item_category -> {
-                val view = LayoutInflater.from(mContext)
+                val view = LayoutInflater.from(parent.context)
                     .inflate(R.layout.item_category, parent, false)
                 ExpenseViewHolder(view)
             }
+
             R.layout.add_button -> {
-                val view = LayoutInflater.from(mContext)
+                val view = LayoutInflater.from(parent.context)
                     .inflate(R.layout.add_button, parent, false)
                 PlaceholderViewHolder(view)
             }
+
             else -> throw IllegalArgumentException("unknown view type $viewType")
         }
     }
@@ -56,8 +56,7 @@ class AccountAdapter(
 
         fun bind() {
             btn.setOnClickListener {
-                val displayIntent = Intent(it.context, CategoryConstructor::class.java)
-                it.context.startActivity(displayIntent)
+                addAccount.invoke()
             }
 
 
@@ -93,7 +92,8 @@ class AccountAdapter(
                 val dragData = ClipData(
                     v.tag as? CharSequence,
                     arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN),
-                    item)
+                    item
+                )
 
                 // Instantiate the drag shadow builder.
                 val myShadow = object : View.DragShadowBuilder(v) {
@@ -136,7 +136,8 @@ class AccountAdapter(
                 }
 
                 // Start the drag.
-                v.startDragAndDrop(dragData,  // The data to be dragged.
+                v.startDragAndDrop(
+                    dragData,  // The data to be dragged.
                     myShadow,  // The drag shadow builder.
                     null,      // No need to use local data.
                     0          // Flags. Not currently used, set to 0.
