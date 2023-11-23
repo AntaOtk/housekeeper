@@ -1,4 +1,4 @@
-package com.example.housekeeper.data
+package com.example.housekeeper.data.bd
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

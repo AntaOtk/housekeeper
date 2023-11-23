@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.CategoryConstructorFragment">
+    tools:context=".presentation.creator.CategoryConstructorFragment">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/leftBorder"
@@ -74,35 +74,6 @@
         app:layout_constraintStart_toEndOf="@id/leftBorder"
         app:layout_constraintTop_toBottomOf="@id/nameCategory" />
 
-    <TextView
-        android:id="@+id/limitCategory"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="12dp"
-        android:gravity="start"
-        android:text="name of"
-        app:layout_constraintBottom_toTopOf="@id/inputLimit"
-        app:layout_constraintEnd_toStartOf="@id/rightBorder"
-        app:layout_constraintStart_toEndOf="@id/leftBorder"
-        app:layout_constraintTop_toBottomOf="@id/inputName" />
-
-
-    <EditText
-        android:id="@+id/inputLimit"
-        style="@style/EditTextStyle"
-        android:layout_width="0dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="10dp"
-        android:hint="add category name"
-        android:imeOptions="actionDone"
-        android:inputType="text"
-        android:paddingStart="9dp"
-        android:singleLine="true"
-        app:layout_constraintEnd_toStartOf="@id/rightBorder"
-        app:layout_constraintStart_toEndOf="@id/leftBorder"
-        app:layout_constraintTop_toBottomOf="@id/limitCategory" />
-
 
     <TextView
         android:id="@+id/iconCategory"
@@ -115,7 +86,7 @@
         app:layout_constraintBottom_toTopOf="@id/rvIcons"
         app:layout_constraintEnd_toStartOf="@id/rightBorder"
         app:layout_constraintStart_toEndOf="@id/leftBorder"
-        app:layout_constraintTop_toBottomOf="@id/inputLimit" />
+        app:layout_constraintTop_toBottomOf="@id/inputName" />
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -152,6 +123,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/size_category"
         android:text="Create"
+        android:enabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/rightBorder"
         app:layout_constraintStart_toEndOf="@id/leftBorder"

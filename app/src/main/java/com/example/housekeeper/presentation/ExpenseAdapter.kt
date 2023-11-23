@@ -63,7 +63,7 @@ class ExpenseAdapter(
         private val icon = itemView.findViewById<ImageView>(R.id.iconGroup)
         fun bind(model: Expense) {
             binding.nameGroup.text = model.name
-            binding.sumGroup.text = "%.2f".format(model.sum)
+            binding.sumGroup.text = "%.2f".format(model.sum ?: 0.0)
             binding.iconGroup.background.setTint(itemView.context.getColor(model.color))
             binding.iconGroup.setImageResource(model.image)
 

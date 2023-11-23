@@ -22,11 +22,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".presentation.CalculatorFragment"
+            android:name=".presentation.calculatuor.CalculatorFragment"
             android:exported="false">
         </activity>
         <activity
-            android:name=".presentation.CategoryConstructorFragment"
+            android:name=".presentation.creator.CategoryConstructorFragment"
             android:exported="false">
         </activity>
 

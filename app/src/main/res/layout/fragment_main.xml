@@ -7,8 +7,12 @@
     android:orientation="vertical"
     tools:context=".presentation.MainFragment">
 
+
+    <include
+        android:id="@+id/included_toolbar" layout="@layout/tolbar"/>
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvAccount"
+        android:id="@+id/rv_account"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -23,7 +27,7 @@
         android:background="?attr/colorOnSecondary"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvCategory"
+        android:id="@+id/rv_category"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"

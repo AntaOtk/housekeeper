@@ -1,4 +1,4 @@
-package com.example.housekeeper.data
+package com.example.housekeeper.data.bd
 
 import androidx.room.Dao
 import androidx.room.Insert
@@ -7,8 +7,8 @@ import androidx.room.Query
 @Dao
 interface CategoryDao {
     @Insert
-    fun insertCategory(categoryEntity: CategoryEntity)
+    suspend fun insertCategory(categoryEntity: CategoryEntity)
 
     @Query("SELECT * FROM category_table")
-    fun getCategories(): List<CategoryEntity>
+    suspend fun getCategories(): List<CategoryEntity>
 }

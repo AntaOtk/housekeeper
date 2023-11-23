@@ -18,12 +18,12 @@
     </fragment>
     <fragment
         android:id="@+id/calculatorFragment"
-        android:name="com.example.housekeeper.presentation.CalculatorFragment"
+        android:name="com.example.housekeeper.presentation.calculatuor.CalculatorFragment"
         android:label="fragment_calculator"
         tools:layout="@layout/fragment_calculator" />
     <fragment
         android:id="@+id/categoryConstructorFragment"
-        android:name="com.example.housekeeper.presentation.CategoryConstructorFragment"
+        android:name="com.example.housekeeper.presentation.creator.CategoryConstructorFragment"
         android:label="fragment_category_constructor"
         tools:layout="@layout/fragment_category_constructor" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.example.housekeeper.data
+package com.example.housekeeper.data.bd
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

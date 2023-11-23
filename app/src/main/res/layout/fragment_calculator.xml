@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#D4D7D9"
-    tools:context=".presentation.CalculatorFragment"
+    tools:context=".presentation.calculatuor.CalculatorFragment"
     tools:ignore="HardcodedText">
 
     <androidx.constraintlayout.widget.Guideline

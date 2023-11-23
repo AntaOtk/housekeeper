@@ -73,79 +73,79 @@ class AccountAdapter(
 
         fun bind(model: Expense) {
             name.text = model.name
-            sum.text = "%.2f".format(model.sum)
+            sum.text = "%.2f".format(model.sum ?: 0.0)
             icon.background.setTint(itemView.context.getColor(model.color))
             icon.setImageResource(model.image)
 
-            icon.setOnLongClickListener { v ->
-                // Create a new ClipData. This is done in two steps to provide
-                // clarity. The convenience method ClipData.newPlainText() can
-                // create a plain text ClipData in one step.
+            /* icon.setOnLongClickListener { v ->
+                 // Create a new ClipData. This is done in two steps to provide
+                 // clarity. The convenience method ClipData.newPlainText() can
+                 // create a plain text ClipData in one step.
 
-                // Create a new ClipData.Item from the ImageView object's tag.
-                val item = ClipData.Item(v.tag as? CharSequence)
+                 // Create a new ClipData.Item from the ImageView object's tag.
+                 val item = ClipData.Item(v.tag as? CharSequence)
 
-                // Create a new ClipData using the tag as a label, the plain text
-                // MIME type, and the already-created item. This creates a new
-                // ClipDescription object within the ClipData and sets its MIME type
-                // to "text/plain".
-                val dragData = ClipData(
-                    v.tag as? CharSequence,
-                    arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN),
-                    item
-                )
+                 // Create a new ClipData using the tag as a label, the plain text
+                 // MIME type, and the already-created item. This creates a new
+                 // ClipDescription object within the ClipData and sets its MIME type
+                 // to "text/plain".
+                 val dragData = ClipData(
+                     v.tag as? CharSequence,
+                     arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN),
+                     item
+                 )
 
-                // Instantiate the drag shadow builder.
-                val myShadow = object : View.DragShadowBuilder(v) {
-                    private val shadow = ColorDrawable(Color.LTGRAY)
+                 // Instantiate the drag shadow builder.
+                 val myShadow = object : View.DragShadowBuilder(v) {
+                     private val shadow = ColorDrawable(Color.LTGRAY)
 
-                    // Define a callback that sends the drag shadow dimensions and touch point
-// back to the system.
-                    override fun onProvideShadowMetrics(size: Point, touch: Point) {
+                     // Define a callback that sends the drag shadow dimensions and touch point
+ // back to the system.
+                     override fun onProvideShadowMetrics(size: Point, touch: Point) {
 
-                        // Set the width of the shadow to half the width of the original
-                        // View.
-                        val width: Int = view.width / 2
+                         // Set the width of the shadow to half the width of the original
+                         // View.
+                         val width: Int = view.width / 2
 
-                        // Set the height of the shadow to half the height of the original
-                        // View.
-                        val height: Int = view.height / 2
+                         // Set the height of the shadow to half the height of the original
+                         // View.
+                         val height: Int = view.height / 2
 
-                        // The drag shadow is a ColorDrawable. Set its dimensions to
-                        // be the same as the Canvas that the system provides. As a result,
-                        // the drag shadow fills the Canvas.
-                        shadow.setBounds(0, 0, width, height)
+                         // The drag shadow is a ColorDrawable. Set its dimensions to
+                         // be the same as the Canvas that the system provides. As a result,
+                         // the drag shadow fills the Canvas.
+                         shadow.setBounds(0, 0, width, height)
 
-                        // Set the size parameter's width and height values. These get back
-                        // to the system through the size parameter.
+                         // Set the size parameter's width and height values. These get back
+                         // to the system through the size parameter.
 
-                        size.set(width, height)
+                         size.set(width, height)
 
-                        // Set the touch point's position to be in the middle of the drag
-                        // shadow.
-                        touch.set(width / 2, height / 2)
-                    }
+                         // Set the touch point's position to be in the middle of the drag
+                         // shadow.
+                         touch.set(width / 2, height / 2)
+                     }
 
-                    // Define a callback that draws the drag shadow in a Canvas that the system
-// constructs from the dimensions passed to onProvideShadowMetrics().
-                    override fun onDrawShadow(canvas: Canvas) {
+                     // Define a callback that draws the drag shadow in a Canvas that the system
+ // constructs from the dimensions passed to onProvideShadowMetrics().
+                     override fun onDrawShadow(canvas: Canvas) {
 
-                        // Draw the ColorDrawable on the Canvas passed in from the system.
-                        shadow.draw(canvas)
-                    }
-                }
+                         // Draw the ColorDrawable on the Canvas passed in from the system.
+                         shadow.draw(canvas)
+                     }
+                 }
 
-                // Start the drag.
-                v.startDragAndDrop(
-                    dragData,  // The data to be dragged.
-                    myShadow,  // The drag shadow builder.
-                    null,      // No need to use local data.
-                    0          // Flags. Not currently used, set to 0.
-                )
+                 // Start the drag.
+                 v.startDragAndDrop(
+                     dragData,  // The data to be dragged.
+                     myShadow,  // The drag shadow builder.
+                     null,      // No need to use local data.
+                     0          // Flags. Not currently used, set to 0.
+                 )
 
-                // Indicate that the long-click is handled.
-                true
-            }
+                 // Indicate that the long-click is handled.
+                 true
+             }*/
         }
     }
 }

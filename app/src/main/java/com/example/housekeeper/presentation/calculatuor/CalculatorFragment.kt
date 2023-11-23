@@ -1,4 +1,4 @@
-package com.example.housekeeper.presentation
+package com.example.housekeeper.presentation.calculatuor
 
 
 import android.os.Bundle
