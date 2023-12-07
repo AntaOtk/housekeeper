@@ -64,7 +64,7 @@ class ExpenseAdapter(
         fun bind(model: Expense) {
             binding.nameGroup.text = model.name
             binding.sumGroup.text = "%.2f".format(model.sum ?: 0.0)
-            binding.iconGroup.background.setTint(itemView.context.getColor(model.color))
+            binding.iconGroup.background.setTint(itemView.context.getColor(R.color.color_2))
             binding.iconGroup.setImageResource(model.image)
 
             /*    binding.iconGroup.setOnDragListener { v, e ->

@@ -1,11 +1,7 @@
 package com.example.housekeeper.domain
 
 import com.example.housekeeper.domain.model.Expense
-import kotlinx.coroutines.flow.Flow
 
 interface CategoryInteractor {
-
-    suspend fun setCategory(category:Expense)
-    fun getCatigories(): Flow<List<Expense>>
-
+    suspend fun setCategory(category: Expense)
 }

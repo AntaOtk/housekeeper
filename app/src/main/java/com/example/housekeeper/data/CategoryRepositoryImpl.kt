@@ -1,5 +1,6 @@
 package com.example.housekeeper.data
 
+import com.example.housekeeper.R
 import com.example.housekeeper.data.bd.CategoryDao
 import com.example.housekeeper.data.bd.CategoryEntity
 import com.example.housekeeper.domain.CategoryRepository
@@ -17,13 +18,46 @@ class CategoryRepositoryImpl(val dao: CategoryDao) : CategoryRepository {
         emit(categories.map { category -> mapFromEntity(category) })
     }
 
+    override suspend fun setBaseCategories() {
+        val list = listOf(
+            CategoryEntity(null,
+                "home",
+                R.drawable.cosmetic,
+            ),
+            CategoryEntity(null,
+                "transport",
+                R.drawable.vaccines,
+            ),
+            CategoryEntity(null,
+                "product",
+                R.drawable.cosmetic,
+            ),
+            CategoryEntity(null,
+                "restaurant",
+                R.drawable.vaccines,
+            ),
+            CategoryEntity(null,
+                "education",
+                R.drawable.vaccines,
+            ),
+            CategoryEntity(null,
+                "hobby",
+                R.drawable.vaccines,
+            ),
+            CategoryEntity(null,
+                "pet",
+                R.drawable.cosmetic,
+            ),
+        )
+        for (item in list){ dao.insertCategory(item)}
+    }
+
     private fun mapFromEntity(categoryEntity: CategoryEntity): Expense {
         return Expense(
             categoryEntity.id,
             categoryEntity.name,
             null,
             categoryEntity.iconSRC,
-            categoryEntity.color
         )
     }
 
@@ -32,7 +66,6 @@ class CategoryRepositoryImpl(val dao: CategoryDao) : CategoryRepository {
             category.id,
             category.name,
             category.image,
-            category.color
         )
     }
 }

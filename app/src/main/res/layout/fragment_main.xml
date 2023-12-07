@@ -19,7 +19,8 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:background="@color/hell_gray"
         tools:itemCount="2"
-        tools:listitem="@layout/item_category"/>
+        tools:listitem="@layout/item_category"
+        />
 
     <View
         android:layout_width="match_parent"

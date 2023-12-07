@@ -67,64 +67,18 @@ class MainFragment : Fragment() {
             "1",
             2.3,
             R.drawable.euro,
-            R.color.color_1
         ),
         Expense(
             null,
             "2",
             12.3,
             R.drawable.euro,
-            R.color.color_1
         )
 
     )
 
     /* expenses.addAll(
-           listOf<Expense>(
-               Expense(null,
-                   "home",
-                   2.3,
-                   R.drawable.cosmetic,
-                   R.color.color_5
-               ),
-               Expense(null,
-                   "transport",
-                   12.3,
-                   R.drawable.vaccines,
-                   R.color.color_4
-               ),
-               Expense(null,
-                   "product",
-                   1.3,
-                   R.drawable.cosmetic,
-                   R.color.color_6
-               ),
-               Expense(null,
-                   "restorante",
-                   12.3,
-                   R.drawable.vaccines,
-                   R.color.color_8
-               ),
-               Expense(null,
-                   "education",
-                   12.3,
-                   R.drawable.vaccines,
-                   R.color.color_7
-               ),
 
-               Expense(null,
-                   "hobby",
-                   15.3,
-                   R.drawable.vaccines,
-                   R.color.color_3
-               ),
-               Expense(null,
-                   "pet",
-                   18.3,
-                   R.drawable.cosmetic,
-                   R.color.color_2
-               ),
-           )
        )*/
 
 

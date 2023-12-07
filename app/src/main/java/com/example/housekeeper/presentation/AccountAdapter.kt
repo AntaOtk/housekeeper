@@ -1,11 +1,5 @@
 package com.example.housekeeper.presentation
 
-import android.content.ClipData
-import android.content.ClipDescription
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Point
-import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -74,7 +68,7 @@ class AccountAdapter(
         fun bind(model: Expense) {
             name.text = model.name
             sum.text = "%.2f".format(model.sum ?: 0.0)
-            icon.background.setTint(itemView.context.getColor(model.color))
+            icon.background.setTint(itemView.context.getColor(R.color.color_6))
             icon.setImageResource(model.image)
 
             /* icon.setOnLongClickListener { v ->

@@ -23,7 +23,6 @@ class ConstructorViewModel(val interactor: CategoryInteractor) : ViewModel() {
                     nameLiveData.value ?: "",
                     null,
                     imageLiveData.value ?: R.drawable.home,
-                    R.color.color_2
                 )
             )
         }
