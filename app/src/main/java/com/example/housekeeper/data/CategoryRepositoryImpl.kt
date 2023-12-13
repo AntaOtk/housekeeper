@@ -3,12 +3,13 @@ package com.example.housekeeper.data
 import com.example.housekeeper.R
 import com.example.housekeeper.data.bd.CategoryDao
 import com.example.housekeeper.data.bd.CategoryEntity
+import com.example.housekeeper.data.bd.TransactionDao
 import com.example.housekeeper.domain.CategoryRepository
 import com.example.housekeeper.domain.model.Expense
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class CategoryRepositoryImpl(val dao: CategoryDao) : CategoryRepository {
+class CategoryRepositoryImpl(val dao: CategoryDao,val transactionDao: TransactionDao) : CategoryRepository {
     override suspend fun setCategory(category: Expense) {
         dao.insertCategory(mapToEntity(category))
     }
@@ -52,11 +53,11 @@ class CategoryRepositoryImpl(val dao: CategoryDao) : CategoryRepository {
         for (item in list){ dao.insertCategory(item)}
     }
 
-    private fun mapFromEntity(categoryEntity: CategoryEntity): Expense {
+    private suspend fun mapFromEntity(categoryEntity: CategoryEntity): Expense {
         return Expense(
             categoryEntity.id,
             categoryEntity.name,
-            null,
+            categoryEntity.id?.let { getSum(it)},
             categoryEntity.iconSRC,
         )
     }
@@ -67,5 +68,14 @@ class CategoryRepositoryImpl(val dao: CategoryDao) : CategoryRepository {
             category.name,
             category.image,
         )
+    }
+
+    private suspend fun getSum(id: Long): Double{
+        var sum = 0.0
+        val transactions = transactionDao.getTransactionWithCategory(id)
+        for (item in transactions) {
+            sum += item.sum
+        }
+        return sum
     }
 }

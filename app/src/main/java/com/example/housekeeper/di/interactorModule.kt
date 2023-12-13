@@ -10,7 +10,7 @@ import org.koin.dsl.module
 
 val interactorModule = module {
     single<CategoryInteractor>{ CategoryInteractorImpl(get()) }
-    single<TransactionInteractor> { TransactionInteractorImpl() }
+    single<TransactionInteractor> { TransactionInteractorImpl(get()) }
     single<BaseInteractor> { BaseInteractorImpl(get(),get()) }
 
 }

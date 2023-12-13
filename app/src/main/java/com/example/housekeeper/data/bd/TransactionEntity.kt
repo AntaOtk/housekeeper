@@ -4,11 +4,11 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "transaction_table")
-data class TransactionEntity (
+data class TransactionEntity(
     @PrimaryKey(autoGenerate = true)
-    val id: Long,
+    val id: Long?,
     val date: String,
-    val sum: String,
-    val toId:String,
-    val fromId: String,
+    val sum: Double,
+    val toId:Long?,
+    val fromId: Long?,
 )

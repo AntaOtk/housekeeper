@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".presentation.calculator.CalculatorFragment"
+            android:name=".presentation.AddTransaction.AddTransactionFragment"
             android:exported="false">
         </activity>
         <activity

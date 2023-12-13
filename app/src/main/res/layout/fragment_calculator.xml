@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".presentation.calculator.CalculatorFragment"
-    tools:ignore="HardcodedText">
+    tools:context=".presentation.AddTransaction.AddTransactionFragment">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -183,7 +183,7 @@
         style="@style/Digit"
         android:layout_marginBottom="10dp"
         android:text="."
-        app:layout_constraintBottom_toTopOf="@id/bottomView"
+        app:layout_constraintBottom_toTopOf="@id/add_transaction_button"
         app:layout_constraintStart_toStartOf="@id/button1" />
 
     <TextView
@@ -227,12 +227,12 @@
         app:layout_constraintStart_toEndOf="@id/button9" />
 
     <Button
-        android:id="@+id/bottomView"
+        android:id="@+id/add_transaction_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/classic_padding"
         android:padding="@dimen/size_category"
-        android:background="?attr/colorSecondaryVariant"
+        android:background="@drawable/button_customize"
         app:layout_constraintStart_toStartOf="@id/left_border"
         app:layout_constraintEnd_toEndOf="@id/right_border"
         app:layout_constraintBottom_toBottomOf="parent"

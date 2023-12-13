@@ -1,4 +1,4 @@
-package com.example.housekeeper.presentation.calculator
+package com.example.housekeeper.presentation.AddTransaction
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,7 +11,7 @@ import com.example.housekeeper.domain.model.Transaction
 import kotlinx.coroutines.launch
 import java.time.LocalDateTime
 
-class ColculaterViewModel(
+class AddTransactionViewModel(
     private val interactor: TransactionInteractor,
     private val categoryInteractor: CategoryInteractor
 ) : ViewModel() {

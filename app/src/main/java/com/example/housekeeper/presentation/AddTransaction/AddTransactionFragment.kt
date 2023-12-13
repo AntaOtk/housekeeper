@@ -1,4 +1,4 @@
-package com.example.housekeeper.presentation.calculator
+package com.example.housekeeper.presentation.AddTransaction
 
 
 import android.os.Bundle
@@ -14,9 +14,9 @@ import com.example.housekeeper.domain.model.Expense
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class CalculatorFragment : Fragment() {
+class AddTransactionFragment : Fragment() {
 
-    private val viewModel by viewModel<ColculaterViewModel>()
+    private val viewModel by viewModel<AddTransactionViewModel>()
 
     private var _binding: FragmentCalculatorBinding? = null
     private val binding get() = _binding!!
@@ -78,6 +78,11 @@ class CalculatorFragment : Fragment() {
         }
         sumTextWatcher.let { binding.sumEt.addTextChangedListener(it) }
         binding.accountRv.adapter = adapter
+
+        binding.addTransactionButton.setOnClickListener {
+            viewModel.addTransaction()
+            findNavController().popBackStack()
+        }
 
         viewModel.observeCategoriesLiveData().observe(viewLifecycleOwner) {
             renderCategories(it)

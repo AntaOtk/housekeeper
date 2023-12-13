@@ -1,4 +1,4 @@
-package com.example.housekeeper.presentation.calculator
+package com.example.housekeeper.presentation.AddTransaction
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
