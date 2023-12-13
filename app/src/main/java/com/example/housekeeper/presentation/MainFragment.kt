@@ -46,7 +46,7 @@ class MainFragment : Fragment() {
         binding.rvCategory.adapter = expenseAdapter
         binding.rvAccount.adapter = AccountAdapter(accounts,addCategory)
         binding.includedToolbar.addTransactionButton.setOnClickListener {
-            findNavController().navigate(id)
+            findNavController().navigate(R.id.action_mainFragment_to_calculatorFragment)
         }
     }
 

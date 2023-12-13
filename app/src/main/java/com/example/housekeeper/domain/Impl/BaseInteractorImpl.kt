@@ -6,7 +6,7 @@ import com.example.housekeeper.domain.CategoryRepository
 import com.example.housekeeper.domain.model.Expense
 import kotlinx.coroutines.flow.Flow
 
-class BaseInteractorImpl(val baseRepository: BaseRepository, val repository: CategoryRepository): BaseInteractor {
+class BaseInteractorImpl(private val baseRepository: BaseRepository, private val repository: CategoryRepository): BaseInteractor {
     override suspend fun getCategories(): Flow<List<Expense>> {
         if (baseRepository.checkFirstStart()){
             baseRepository.setFirstStartFlag()

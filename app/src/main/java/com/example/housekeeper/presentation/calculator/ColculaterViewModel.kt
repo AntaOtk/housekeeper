@@ -1,4 +1,4 @@
-package com.example.housekeeper.presentation.calculatuor
+package com.example.housekeeper.presentation.calculator
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -12,5 +12,9 @@ class ColculaterViewModel(val interactor: TransactionInteractor) : ViewModel() {
         viewModelScope.launch {
             interactor.setTransaction(transaction)
         }
+    }
+
+    fun showAccount() {
+        TODO("Not yet implemented")
     }
 }

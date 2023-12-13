@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/calculatorFragment"
-        android:name="com.example.housekeeper.presentation.calculatuor.CalculatorFragment"
+        android:name="com.example.housekeeper.presentation.calculator.CalculatorFragment"
         android:label="fragment_calculator"
         tools:layout="@layout/fragment_calculator" />
     <fragment
