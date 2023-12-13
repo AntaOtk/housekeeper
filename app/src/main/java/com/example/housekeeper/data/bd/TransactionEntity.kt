@@ -9,6 +9,6 @@ data class TransactionEntity(
     val id: Long?,
     val date: String,
     val sum: Double,
-    val toId:Long?,
     val fromId: Long?,
+    val toId:Long?,
 )

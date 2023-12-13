@@ -11,7 +11,7 @@ class TransactionRepositoryImpl(val dao: TransactionDao): TransactionRepository 
         dao.insertTransaction(transactionEntity)
     }
 
-    fun mapTransactionToEntity(transaction: Transaction): TransactionEntity{
+    private fun mapTransactionToEntity(transaction: Transaction): TransactionEntity{
         return TransactionEntity(
             null,
             transaction.date,
