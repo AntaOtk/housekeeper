@@ -1,4 +1,4 @@
-package com.example.housekeeper.presentation
+package com.example.housekeeper.presentation.main
 
 import android.view.LayoutInflater
 import android.view.View

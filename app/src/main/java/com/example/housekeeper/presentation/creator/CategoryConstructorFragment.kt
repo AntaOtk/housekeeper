@@ -12,7 +12,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.housekeeper.R
 import com.example.housekeeper.databinding.FragmentCategoryConstructorBinding
-import com.example.housekeeper.presentation.AddIconAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CategoryConstructorFragment : Fragment() {

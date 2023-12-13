@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".presentation.MainFragment">
+    tools:context=".presentation.main.MainFragment">
 
 
     <include
-        android:id="@+id/included_toolbar" layout="@layout/tolbar"/>
+        android:id="@+id/included_toolbar" layout="@layout/toolbar"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_account"

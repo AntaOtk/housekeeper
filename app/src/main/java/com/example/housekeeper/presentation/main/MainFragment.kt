@@ -1,4 +1,4 @@
-package com.example.housekeeper.presentation
+package com.example.housekeeper.presentation.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -48,6 +48,9 @@ class MainFragment : Fragment() {
         binding.includedToolbar.addTransactionButton.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_calculatorFragment)
         }
+        binding.includedToolbar.statisticButton.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_statisticFragment)
+        }
     }
 
     override fun onDestroyView() {
@@ -76,10 +79,5 @@ class MainFragment : Fragment() {
         )
 
     )
-
-    /* expenses.addAll(
-
-       )*/
-
 
 }

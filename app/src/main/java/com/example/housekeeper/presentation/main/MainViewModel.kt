@@ -1,4 +1,4 @@
-package com.example.housekeeper.presentation
+package com.example.housekeeper.presentation.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

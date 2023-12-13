@@ -1,4 +1,4 @@
-package com.example.housekeeper.presentation.AddTransaction
+package com.example.housekeeper.presentation.add_transaction
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

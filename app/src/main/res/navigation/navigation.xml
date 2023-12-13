@@ -6,7 +6,7 @@
     app:startDestination="@id/mainFragment">
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.housekeeper.presentation.MainFragment"
+        android:name="com.example.housekeeper.presentation.main.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
@@ -15,10 +15,13 @@
         <action
             android:id="@+id/action_mainFragment_to_categoryConstructorFragment"
             app:destination="@id/categoryConstructorFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_statisticFragment"
+            app:destination="@id/statisticFragment" />
     </fragment>
     <fragment
         android:id="@+id/calculatorFragment"
-        android:name="com.example.housekeeper.presentation.AddTransaction.AddTransactionFragment"
+        android:name="com.example.housekeeper.presentation.add_transaction.AddTransactionFragment"
         android:label="fragment_calculator"
         tools:layout="@layout/fragment_calculator" />
     <fragment
@@ -26,4 +29,9 @@
         android:name="com.example.housekeeper.presentation.creator.CategoryConstructorFragment"
         android:label="fragment_category_constructor"
         tools:layout="@layout/fragment_category_constructor" />
+    <fragment
+        android:id="@+id/statisticFragment"
+        android:name="com.example.housekeeper.presentation.statistic.StatisticFragment"
+        android:label="fragment_statistic"
+        tools:layout="@layout/fragment_statistic" />
 </navigation>
