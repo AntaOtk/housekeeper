@@ -7,27 +7,27 @@
     tools:context=".presentation.creator.CategoryConstructorFragment">
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/leftBorder"
+        android:id="@+id/left_border"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.10" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/rightBorder"
+        android:id="@+id/right_border"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.90" />
 
     <ImageButton
-        android:id="@+id/backButton"
+        android:id="@+id/back_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:background="@color/white"
         android:src="@drawable/arrow_back"
-        app:layout_constraintEnd_toStartOf="@id/leftBorder"
+        app:layout_constraintEnd_toStartOf="@id/left_border"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -41,8 +41,8 @@
         android:text="Create new category"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@id/nameCategory"
-        app:layout_constraintEnd_toStartOf="@id/rightBorder"
-        app:layout_constraintStart_toEndOf="@id/leftBorder"
+        app:layout_constraintEnd_toStartOf="@id/right_border"
+        app:layout_constraintStart_toEndOf="@id/left_border"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -54,8 +54,8 @@
         android:gravity="start"
         android:text="name of"
         app:layout_constraintBottom_toTopOf="@id/inputName"
-        app:layout_constraintEnd_toStartOf="@id/rightBorder"
-        app:layout_constraintStart_toEndOf="@id/leftBorder"
+        app:layout_constraintEnd_toStartOf="@id/right_border"
+        app:layout_constraintStart_toEndOf="@id/left_border"
         app:layout_constraintTop_toBottomOf="@id/header" />
 
 
@@ -70,8 +70,8 @@
         android:inputType="text"
         android:paddingStart="9dp"
         android:singleLine="true"
-        app:layout_constraintEnd_toStartOf="@id/rightBorder"
-        app:layout_constraintStart_toEndOf="@id/leftBorder"
+        app:layout_constraintEnd_toStartOf="@id/right_border"
+        app:layout_constraintStart_toEndOf="@id/left_border"
         app:layout_constraintTop_toBottomOf="@id/nameCategory" />
 
 
@@ -84,8 +84,8 @@
         android:gravity="start"
         android:text="My icon"
         app:layout_constraintBottom_toTopOf="@id/rvIcons"
-        app:layout_constraintEnd_toStartOf="@id/rightBorder"
-        app:layout_constraintStart_toEndOf="@id/leftBorder"
+        app:layout_constraintEnd_toStartOf="@id/right_border"
+        app:layout_constraintStart_toEndOf="@id/left_border"
         app:layout_constraintTop_toBottomOf="@id/inputName" />
 
 
@@ -98,8 +98,8 @@
         android:background="@color/color_7"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@id/createButton"
-        app:layout_constraintEnd_toStartOf="@id/rightBorder"
-        app:layout_constraintStart_toEndOf="@id/leftBorder"
+        app:layout_constraintEnd_toStartOf="@id/right_border"
+        app:layout_constraintStart_toEndOf="@id/left_border"
         app:layout_constraintTop_toBottomOf="@id/iconCategory"
         tools:listitem="@layout/item_icon" />
 
@@ -125,8 +125,8 @@
         android:text="Create"
         android:enabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/rightBorder"
-        app:layout_constraintStart_toEndOf="@id/leftBorder"
+        app:layout_constraintEnd_toStartOf="@id/right_border"
+        app:layout_constraintStart_toEndOf="@id/left_border"
         app:layout_constraintTop_toBottomOf="@id/rvIcons" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
