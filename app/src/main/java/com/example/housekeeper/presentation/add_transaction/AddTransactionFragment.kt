@@ -87,9 +87,12 @@ class AddTransactionFragment : Fragment() {
         viewModel.observeCategoriesLiveData().observe(viewLifecycleOwner) {
             renderCategories(it)
         }
-        viewModel.observeFromAccountId().observe(viewLifecycleOwner) {
+        viewModel.observeToAccountId().observe(viewLifecycleOwner) {
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
             setCategory(it.name)
+        }
+        viewModel.observeEnabledState().observe(viewLifecycleOwner){
+            binding.addTransactionButton.isEnabled =it
         }
     }
 

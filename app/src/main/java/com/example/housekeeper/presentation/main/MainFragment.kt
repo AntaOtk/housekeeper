@@ -35,7 +35,7 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getCategories()
         viewModel.observeCategoryLiveData().observe(viewLifecycleOwner) {
-            rander(it)
+            render(it)
         }
         addCategory =
             { findNavController().navigate(R.id.action_mainFragment_to_categoryConstructorFragment) }
@@ -58,7 +58,7 @@ class MainFragment : Fragment() {
         _binding = null
     }
 
-    private fun rander(categories: List<Expense>) {
+    private fun render(categories: List<Expense>) {
         expenses.clear()
         expenses.addAll(categories)
         expenseAdapter.notifyDataSetChanged()

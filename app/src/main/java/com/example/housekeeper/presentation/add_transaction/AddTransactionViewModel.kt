@@ -20,14 +20,14 @@ class AddTransactionViewModel(
 
     fun observeCategoriesLiveData(): LiveData<List<Expense>> = categoriesLiveData
     private var actualSum = ""
-    private val toAccountId: Long? = null
-    private val fromAccount = MutableLiveData<Expense>()
-    fun observeFromAccountId(): LiveData<Expense> = fromAccount
-
-
+    private var fromAccountId: Long? = null
+    private val toAccount = MutableLiveData<Expense>()
+    fun observeToAccountId(): LiveData<Expense> = toAccount
+    private val enabledState = MutableLiveData(false)
+    fun observeEnabledState(): LiveData<Boolean> = enabledState
     fun addTransaction() {
         viewModelScope.launch {
-            interactor.setTransaction(Transaction(LocalDateTime.now().toString(),actualSum, toAccountId, fromAccount.value?.id))
+            interactor.setTransaction(Transaction(LocalDateTime.now().toString(),actualSum, fromAccountId, toAccount.value?.id))
         }
     }
 
@@ -42,9 +42,15 @@ class AddTransactionViewModel(
 
     fun setSum(s: String) {
         if (s != actualSum) actualSum = s
+        checkEnable()
+    }
+
+    private fun checkEnable(){
+        if ((fromAccountId != null) || (toAccount.value != null))enabledState.postValue(actualSum.isNotEmpty())
     }
 
     fun setCategory(category: Expense) {
-        fromAccount.postValue(category)
+        toAccount.postValue(category)
+        checkEnable()
     }
 }
