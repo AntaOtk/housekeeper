@@ -7,17 +7,12 @@
     android:orientation="vertical"
     tools:context=".presentation.main.MainFragment">
 
-
-    <include
-        android:id="@+id/included_toolbar" layout="@layout/toolbar"/>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_account"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:background="@color/hell_gray"
         tools:itemCount="2"
         tools:listitem="@layout/item_category"
         />
@@ -33,7 +28,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-android:background="@color/light_gray"
         tools:itemCount="6"
         tools:listitem="@layout/item_category"/>
 
