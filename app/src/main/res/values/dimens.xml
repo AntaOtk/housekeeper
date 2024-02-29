@@ -6,4 +6,5 @@
     <dimen name="classic_padding">16dp</dimen>
     <dimen name="default_radius">16dp</dimen>
     <dimen name="circularViewMinSize">200dp</dimen>
+    <dimen name="default_column_chart_width">200dp</dimen>
 </resources>
