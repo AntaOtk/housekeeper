@@ -5,4 +5,5 @@
     <dimen name="toolbar_size">36dp</dimen>
     <dimen name="classic_padding">16dp</dimen>
     <dimen name="default_radius">16dp</dimen>
+    <dimen name="circularViewMinSize">200dp</dimen>
 </resources>

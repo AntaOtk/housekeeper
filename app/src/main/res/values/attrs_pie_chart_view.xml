@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PieChartView">
+        <attr name="pieChartColors" format="color"/>
+        <attr name="pieChartCircleSectionSpace" format="dimension"/>
+        <attr name="pieChartCirclePaintRoundSize" format="dimension"/>
+        <attr name="pieChartCirclePadding" format="dimension"/>
+        <attr name="pieChartCircleStrokeWidth" format="dimension"/>
+    </declare-styleable>
+</resources>
