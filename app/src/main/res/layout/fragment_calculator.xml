@@ -12,234 +12,143 @@
         android:layout_height="match_parent"
         android:background="#D4D7D9">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/left_border"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.10"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/left_border"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.10" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/right_border"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.90" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/right_border"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.90" />
 
-    <ImageButton
-        android:id="@+id/back_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/arrow_back"
-        android:layout_marginTop="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/left_border"
-        />
+        <ImageButton
+            android:id="@+id/back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/arrow_back"
+            app:layout_constraintEnd_toStartOf="@id/left_border"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/from_account"
-        style="@style/CategoryText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        app:layout_constraintStart_toEndOf="@id/left_border"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/arrow"
-        android:text="account"/>
+        <TextView
+            android:id="@+id/from_account"
+            style="@style/CategoryText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="account"
+            app:layout_constraintEnd_toStartOf="@id/arrow"
+            app:layout_constraintStart_toEndOf="@id/left_border"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/arrow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/arrow_right"
-        app:layout_constraintStart_toEndOf="@id/from_account"
-        app:layout_constraintTop_toTopOf="@id/from_account"
-        app:layout_constraintBottom_toBottomOf="@id/from_account"
-        app:layout_constraintEnd_toStartOf="@id/to_account"/>
+        <ImageView
+            android:id="@+id/arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_right"
+            app:layout_constraintBottom_toBottomOf="@id/from_account"
+            app:layout_constraintEnd_toStartOf="@id/to_account"
+            app:layout_constraintStart_toEndOf="@id/from_account"
+            app:layout_constraintTop_toTopOf="@id/from_account" />
 
-    <TextView
-        android:id="@+id/to_account"
-        style="@style/CategoryText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/arrow"
-        app:layout_constraintBaseline_toBaselineOf="@id/from_account"
-        app:layout_constraintEnd_toStartOf="@id/right_border"
-        android:text="category"/>
+        <TextView
+            android:id="@+id/to_account"
+            style="@style/CategoryText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="category"
+            app:layout_constraintBaseline_toBaselineOf="@id/from_account"
+            app:layout_constraintEnd_toStartOf="@id/right_border"
+            app:layout_constraintStart_toEndOf="@id/arrow" />
 
-    <EditText
-        android:id="@+id/sum_et"
-        style="@style/EditTextStyle"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/toolbar_size"
-        android:layout_marginVertical="@dimen/classic_padding"
-        android:paddingHorizontal="@dimen/classic_padding"
-        android:background="@color/white"
-        app:layout_constraintEnd_toStartOf="@id/right_border"
-        app:layout_constraintStart_toEndOf="@id/left_border"
-        app:layout_constraintTop_toBottomOf="@id/from_account"
-        android:inputType="numberDecimal"
-        android:maxLength="30"
-        android:maxLines="1"
-        android:gravity="center|end"
-        />
+        <TextView
+            android:id="@+id/tv_date"
+            style="@style/defaultText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Date transaction:"
+            app:layout_constraintStart_toEndOf="@id/left_border"
+            app:layout_constraintTop_toBottomOf="@id/from_account" />
 
-    <EditText
-        android:id="@+id/comment_et"
-        style="@style/EditTextStyle"
-        android:padding="@dimen/classic_padding"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginVertical="@dimen/classic_padding"
-        android:hint="comment"
-        app:layout_constraintBottom_toTopOf="@id/button1"
-        app:layout_constraintEnd_toStartOf="@id/right_border"
-        app:layout_constraintStart_toEndOf="@id/left_border"
-        app:layout_constraintTop_toBottomOf="@id/sum_et"
-        android:inputType="text"
-        android:maxLength="30"
-        android:maxLines="1"
-        android:gravity="top|start"
-        />
+        <EditText
+            android:id="@+id/et_data"
+            style="@style/EditTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/toolbar_size"
+            android:layout_marginVertical="@dimen/classic_padding"
+            android:gravity="center|end"
+            android:inputType="numberDecimal"
+            android:maxLength="30"
+            android:maxLines="1"
+            android:paddingHorizontal="@dimen/classic_padding"
+            app:layout_constraintEnd_toStartOf="@id/right_border"
+            app:layout_constraintStart_toEndOf="@id/left_border"
+            app:layout_constraintTop_toBottomOf="@id/tv_date" />
 
-    <TextView
-        android:id="@+id/button1"
-        style="@style/Digit"
-        android:layout_marginBottom="10dp"
-        android:text="1"
-        app:layout_constraintBottom_toTopOf="@id/button4"
-        app:layout_constraintStart_toEndOf="@id/left_border" />
+        <TextView
+            android:id="@+id/tv_sum"
+            style="@style/defaultText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Sum transaction:"
+            app:layout_constraintStart_toEndOf="@id/left_border"
+            app:layout_constraintTop_toBottomOf="@id/et_data" />
 
-    <TextView
-        android:id="@+id/button2"
-        style="@style/Digit"
-        android:layout_marginStart="10dp"
-        android:text="2"
-        app:layout_constraintBaseline_toBaselineOf="@id/button1"
-        app:layout_constraintStart_toEndOf="@id/button1" />
+        <EditText
+            android:id="@+id/et_sum"
+            style="@style/EditTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/toolbar_size"
+            android:layout_marginVertical="@dimen/classic_padding"
+            android:background="@color/white"
+            android:gravity="center|end"
+            android:inputType="numberDecimal"
+            android:maxLength="30"
+            android:maxLines="1"
+            android:paddingHorizontal="@dimen/classic_padding"
+            app:layout_constraintEnd_toStartOf="@id/right_border"
+            app:layout_constraintStart_toEndOf="@id/left_border"
+            app:layout_constraintTop_toBottomOf="@id/tv_sum" />
 
-    <TextView
-        android:id="@+id/button3"
-        style="@style/Digit"
-        android:layout_marginStart="10dp"
-        android:text="3"
-        app:layout_constraintBaseline_toBaselineOf="@id/button1"
-        app:layout_constraintStart_toEndOf="@id/button2" />
+        <EditText
+            android:id="@+id/comment_et"
+            style="@style/EditTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginVertical="@dimen/classic_padding"
+            android:gravity="top|start"
+            android:hint="comment"
+            android:inputType="text"
+            android:maxLength="30"
+            android:maxLines="1"
+            android:padding="@dimen/classic_padding"
+            app:layout_constraintBottom_toTopOf="@id/add_transaction_button"
+            app:layout_constraintEnd_toStartOf="@id/right_border"
+            app:layout_constraintStart_toEndOf="@id/left_border"
+            app:layout_constraintTop_toBottomOf="@id/et_sum" />
 
-    <TextView
-        android:id="@+id/button4"
-        style="@style/Digit"
-        android:layout_marginBottom="10dp"
-        android:text="4"
-        app:layout_constraintBottom_toTopOf="@id/button7"
-        app:layout_constraintStart_toStartOf="@id/button1" />
-
-
-    <TextView
-        android:id="@+id/button5"
-        style="@style/Digit"
-        android:layout_marginStart="10dp"
-        android:text="5"
-        app:layout_constraintBaseline_toBaselineOf="@id/button4"
-        app:layout_constraintStart_toEndOf="@id/button4" />
-
-
-    <TextView
-        android:id="@+id/button6"
-        style="@style/Digit"
-        android:layout_marginStart="10dp"
-        android:text="6"
-        app:layout_constraintBaseline_toBaselineOf="@id/button4"
-        app:layout_constraintStart_toEndOf="@id/button5" />
-
-    <TextView
-        android:id="@+id/button7"
-        style="@style/Digit"
-        android:layout_marginBottom="10dp"
-        android:text="7"
-        app:layout_constraintBottom_toTopOf="@id/buttonPoint"
-        app:layout_constraintStart_toStartOf="@id/button1" />
-
-    <TextView
-        android:id="@+id/button8"
-        style="@style/Digit"
-        android:layout_marginStart="10dp"
-        android:text="8"
-        app:layout_constraintBaseline_toBaselineOf="@id/button7"
-        app:layout_constraintStart_toEndOf="@id/button7" />
-
-    <TextView
-        android:id="@+id/button9"
-        style="@style/Digit"
-        android:layout_marginStart="10dp"
-        android:text="9"
-        app:layout_constraintBaseline_toBaselineOf="@id/button7"
-        app:layout_constraintStart_toEndOf="@id/button8" />
-
-
-    <TextView
-        android:id="@+id/buttonPoint"
-        style="@style/Digit"
-        android:layout_marginBottom="10dp"
-        android:text="."
-        app:layout_constraintBottom_toTopOf="@id/add_transaction_button"
-        app:layout_constraintStart_toStartOf="@id/button1" />
-
-    <TextView
-        android:id="@+id/buttonZero"
-        style="@style/Digit"
-        android:layout_marginStart="10dp"
-        android:text="0"
-        app:layout_constraintBaseline_toBaselineOf="@id/buttonPoint"
-        app:layout_constraintStart_toEndOf="@id/buttonPoint" />
-
-    <TextView
-        android:id="@+id/buttonBack"
-        style="@style/Digit"
-        android:layout_marginStart="10dp"
-        android:text="_"
-        app:layout_constraintBaseline_toBaselineOf="@id/buttonZero"
-        app:layout_constraintStart_toEndOf="@id/buttonZero" />
-
-    <TextView
-        android:id="@+id/buttonPlus"
-        style="@style/Digit"
-        android:layout_marginStart="10dp"
-        android:text="+"
-        app:layout_constraintBaseline_toBaselineOf="@id/button3"
-        app:layout_constraintStart_toEndOf="@id/button3" />
-
-    <TextView
-        android:id="@+id/buttonMinus"
-        style="@style/Digit"
-        android:layout_marginStart="10dp"
-        android:text="-"
-        app:layout_constraintBaseline_toBaselineOf="@id/button6"
-        app:layout_constraintStart_toEndOf="@id/button6" />
-
-    <TextView
-        android:id="@+id/buttonEquels"
-        style="@style/Digit"
-        android:layout_marginStart="10dp"
-        android:text="="
-        app:layout_constraintBaseline_toBaselineOf="@id/button9"
-        app:layout_constraintStart_toEndOf="@id/button9" />
-
-    <Button
-        android:id="@+id/add_transaction_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/classic_padding"
-        android:padding="@dimen/size_category"
-        android:background="@drawable/button_customize"
-        app:layout_constraintStart_toStartOf="@id/left_border"
-        app:layout_constraintEnd_toEndOf="@id/right_border"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:textAllCaps="false"
-        android:text="@string/add"
-        android:enabled="false"
-        android:textColor="@color/white"/>
+        <Button
+            android:id="@+id/add_transaction_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/classic_padding"
+            android:background="@drawable/button_customize"
+            android:enabled="false"
+            android:padding="@dimen/size_category"
+            android:text="@string/add"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/right_border"
+            app:layout_constraintStart_toStartOf="@id/left_border" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -248,8 +157,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bottom_rectangle"
-        android:padding="@dimen/classic_padding"
         android:orientation="vertical"
+        android:padding="@dimen/classic_padding"
         app:behavior_hideable="true"
         app:behavior_peekHeight="365dp"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
@@ -261,6 +170,6 @@
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:itemCount="3"
-            tools:listitem="@layout/item_account"/>
+            tools:listitem="@layout/item_account" />
     </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

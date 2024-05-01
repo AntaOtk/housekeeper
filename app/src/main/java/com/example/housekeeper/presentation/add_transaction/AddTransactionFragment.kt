@@ -1,6 +1,7 @@
 package com.example.housekeeper.presentation.add_transaction
 
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -11,8 +12,15 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.housekeeper.databinding.FragmentCalculatorBinding
 import com.example.housekeeper.domain.model.Expense
+import com.example.housekeeper.presentation.main.ExpenseAdapter.Companion.ACCOUNT_ID
+import com.example.housekeeper.presentation.main.ExpenseAdapter.Companion.CATEGORY_ID
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.Calendar
+import javax.xml.datatype.DatatypeConstants.MONTHS
+
 
 class AddTransactionFragment : Fragment() {
 
@@ -20,10 +28,14 @@ class AddTransactionFragment : Fragment() {
 
     private var _binding: FragmentCalculatorBinding? = null
     private val binding get() = _binding!!
-
     private val categories = mutableListOf<Expense>()
-    val adapter = CategoryAdapter(categories) { category ->
+    private val categoriesAdapter = CategoryAdapter(categories) { category ->
         viewModel.setCategory(category)
+    }
+
+    private val accounts = mutableListOf<Expense>()
+    private val accountsAdapter = CategoryAdapter(categories) { account ->
+        viewModel.setAccount(account)
     }
 
 
@@ -39,33 +51,32 @@ class AddTransactionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.backButton.setOnClickListener { findNavController().popBackStack() }
-
-        val bottomSheetBehavior = BottomSheetBehavior.from(binding.accountBottomSheet).apply {
+        binding.fromAccount.text =  arguments?.getString(ACCOUNT_ID)
+        viewModel.setAccountFromID(arguments?.getString(CATEGORY_ID)?.toLong())
+        val bottomCategoriesSheetBehavior = BottomSheetBehavior.from(binding.accountBottomSheet).apply {
             state = BottomSheetBehavior.STATE_HIDDEN
         }
-
-        bottomSheetBehavior.addBottomSheetCallback(object :
+        bottomCategoriesSheetBehavior.addBottomSheetCallback(object :
             BottomSheetBehavior.BottomSheetCallback() {
-
             override fun onStateChanged(bottomSheet: View, newState: Int) {
                 when (newState) {
                     BottomSheetBehavior.STATE_HIDDEN -> {
                     }
 
                     else -> {
-                        viewModel.showAccount()
+                        viewModel.showCategories()
                     }
                 }
             }
-
             override fun onSlide(bottomSheet: View, slideOffset: Float) {
             }
         })
+        setData()
 
         binding.toAccount.setOnClickListener {
-            bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
-
+            bottomCategoriesSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
         }
+
         val sumTextWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
@@ -76,8 +87,8 @@ class AddTransactionFragment : Fragment() {
             override fun afterTextChanged(s: Editable?) {
             }
         }
-        sumTextWatcher.let { binding.sumEt.addTextChangedListener(it) }
-        binding.accountRv.adapter = adapter
+        sumTextWatcher.let { binding.etSum.addTextChangedListener(it) }
+        binding.accountRv.adapter = categoriesAdapter
 
         binding.addTransactionButton.setOnClickListener {
             viewModel.addTransaction()
@@ -87,12 +98,26 @@ class AddTransactionFragment : Fragment() {
         viewModel.observeCategoriesLiveData().observe(viewLifecycleOwner) {
             renderCategories(it)
         }
-        viewModel.observeToAccountId().observe(viewLifecycleOwner) {
-            bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+        viewModel.observeToAccount().observe(viewLifecycleOwner) {
+            bottomCategoriesSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
             setCategory(it.name)
         }
         viewModel.observeEnabledState().observe(viewLifecycleOwner){
             binding.addTransactionButton.isEnabled =it
+        }
+    }
+
+    private fun setData() {
+        val c = Calendar.getInstance()
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH)
+        val day = c.get(Calendar.DAY_OF_MONTH)
+        binding.etData.setText("$day.$month.$year")
+        binding.etData.setOnClickListener {
+            val dpd = DatePickerDialog(requireContext(), DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
+                binding.etData.setText("$dayOfMonth.$month.$year")
+            }, year, month, day)
+            dpd.show()
         }
     }
 
@@ -103,6 +128,6 @@ class AddTransactionFragment : Fragment() {
     private fun renderCategories(list: List<Expense>) {
         categories.clear()
         categories.addAll(list)
-        adapter.notifyDataSetChanged()
+        categoriesAdapter.notifyDataSetChanged()
     }
 }
