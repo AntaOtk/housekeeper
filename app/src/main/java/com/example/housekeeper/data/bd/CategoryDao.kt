@@ -6,7 +6,7 @@ import androidx.room.Query
 
 @Dao
 interface CategoryDao {
-    @Insert
+    @Insert(CategoryEntity::class)
     suspend fun insertCategory(categoryEntity: CategoryEntity)
 
     @Query("SELECT * FROM category_table")

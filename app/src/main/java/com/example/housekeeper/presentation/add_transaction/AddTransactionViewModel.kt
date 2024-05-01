@@ -84,7 +84,7 @@ class AddTransactionViewModel(
     fun setAccountFromID(id: Long?) {
         if (id != null) {
             viewModelScope.launch {
-                categoryInteractor.getCategory(id).collect { category ->
+                interactor.getCategory(id).collect { category ->
                     setCategory(category)
                     Log.d("drag", "category $category")
                 }

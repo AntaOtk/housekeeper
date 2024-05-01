@@ -23,11 +23,6 @@ class CategoryRepositoryImpl(
         emit(categories.map { category -> mapFromEntity(category) })
     }
 
-    override fun getAccounts(): Flow<List<Expense>> = flow {
-        val categories = dao.getCategories()
-        emit(categories.map { category -> mapFromEntity(category) })
-    }
-
     override fun getCategory(id: Long): Flow<Expense> = flow {
         emit(mapFromEntity(dao.getCategory(id)))
     }
