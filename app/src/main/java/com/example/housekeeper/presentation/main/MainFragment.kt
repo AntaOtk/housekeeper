@@ -51,12 +51,6 @@ class MainFragment : Fragment() {
             GridLayoutManager(requireContext(), 4, GridLayoutManager.VERTICAL, false)
         binding.rvCategory.adapter = expenseAdapter
         binding.rvAccount.adapter = accountsAdapter
-        binding.includedToolbar.addTransactionButton.setOnClickListener {
-            findNavController().navigate(R.id.action_mainFragment_to_calculatorFragment)
-        }
-        binding.includedToolbar.statisticButton.setOnClickListener {
-            findNavController().navigate(R.id.action_mainFragment_to_statisticFragment)
-        }
     }
 
     override fun onDestroyView() {
