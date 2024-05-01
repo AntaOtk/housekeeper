@@ -30,13 +30,13 @@ class AccountRepositoryImpl(
     override suspend fun setBaseAccounts() {
         val list = listOf(
             AccountEntity(
-                1,
-                "1",
+                101,
+                "cash",
                 R.drawable.euro,
             ),
             AccountEntity(
-                2,
-                "2",
+                102,
+                "deposit",
                 R.drawable.euro,
             )
         )

@@ -1,6 +1,7 @@
 package com.example.housekeeper.presentation.add_transaction
 
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.os.Bundle
 import android.text.Editable
@@ -48,8 +49,8 @@ class AddTransactionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.backButton.setOnClickListener { findNavController().popBackStack() }
-        binding.fromAccount.text = arguments?.getString(ACCOUNT_ID)
-        viewModel.setAccountFromID(arguments?.getString(CATEGORY_ID)?.toLong())
+        viewModel.setAccountFromID(arguments?.getString(ACCOUNT_ID)?.toLong())
+        viewModel.setCategoryFromID(arguments?.getString(CATEGORY_ID)?.toLong())
         val bottomCategoriesSheetBehavior =
             BottomSheetBehavior.from(binding.accountBottomSheet).apply {
                 state = BottomSheetBehavior.STATE_HIDDEN
@@ -101,11 +102,19 @@ class AddTransactionFragment : Fragment() {
             bottomCategoriesSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
             setCategory(it.name)
         }
+        viewModel.observeFromAccount().observe(viewLifecycleOwner) {
+            setAccount(it.name)
+        }
         viewModel.observeEnabledState().observe(viewLifecycleOwner) {
             binding.addTransactionButton.isEnabled = it
         }
     }
 
+    private fun setAccount(name: String) {
+        binding.fromAccount.text = name
+    }
+
+    @SuppressLint("SetTextI18n")
     private fun setData() {
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
@@ -115,12 +124,12 @@ class AddTransactionFragment : Fragment() {
         binding.etData.setOnClickListener {
             val dpd = DatePickerDialog(
                 requireContext(),
-                DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
+                { _, year, month, dayOfMonth ->
                     val currentMonth = month + 1
                     binding.etData.setText("$dayOfMonth.$currentMonth.$year")
                 },
                 year,
-                month-1,
+                month - 1,
                 day
             )
             dpd.show()

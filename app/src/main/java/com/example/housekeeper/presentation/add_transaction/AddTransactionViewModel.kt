@@ -1,6 +1,5 @@
 package com.example.housekeeper.presentation.add_transaction
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -26,7 +25,7 @@ class AddTransactionViewModel(
     private val fromAccount = MutableLiveData<Expense>()
     private val toAccount = MutableLiveData<Expense>()
     fun observeToAccount(): LiveData<Expense> = toAccount
-    fun observeFromAccount(): LiveData<Expense> = toAccount
+    fun observeFromAccount(): LiveData<Expense> = fromAccount
     private val enabledState = MutableLiveData(false)
     fun observeEnabledState(): LiveData<Boolean> = enabledState
     fun addTransaction() {
@@ -84,9 +83,18 @@ class AddTransactionViewModel(
     fun setAccountFromID(id: Long?) {
         if (id != null) {
             viewModelScope.launch {
+                interactor.getAccount(id).collect { account ->
+                    setAccount(account)
+                }
+            }
+        }
+    }
+
+    fun setCategoryFromID(id: Long?) {
+        if (id != null) {
+            viewModelScope.launch {
                 interactor.getCategory(id).collect { category ->
                     setCategory(category)
-                    Log.d("drag", "category $category")
                 }
             }
         }
