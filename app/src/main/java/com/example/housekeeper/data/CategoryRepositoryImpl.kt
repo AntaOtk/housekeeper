@@ -9,7 +9,8 @@ import com.example.housekeeper.domain.model.Expense
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class CategoryRepositoryImpl(val dao: CategoryDao,val transactionDao: TransactionDao) : CategoryRepository {
+class CategoryRepositoryImpl(private val dao: CategoryDao, private val transactionDao: TransactionDao) :
+    CategoryRepository {
     override suspend fun setCategory(category: Expense) {
         dao.insertCategory(mapToEntity(category))
     }
@@ -19,45 +20,59 @@ class CategoryRepositoryImpl(val dao: CategoryDao,val transactionDao: Transactio
         emit(categories.map { category -> mapFromEntity(category) })
     }
 
+    override fun getAccounts(): Flow<List<Expense>> = flow {
+        val categories = dao.getCategories()
+        emit(categories.map { category -> mapFromEntity(category) })
+    }
+
     override suspend fun setBaseCategories() {
         val list = listOf(
-            CategoryEntity(null,
+            CategoryEntity(
+                null,
                 "home",
                 R.drawable.home,
             ),
-            CategoryEntity(null,
+            CategoryEntity(
+                null,
                 "transport",
                 R.drawable.car_servise,
             ),
-            CategoryEntity(null,
+            CategoryEntity(
+                null,
                 "product",
                 R.drawable.cosmetic,
             ),
-            CategoryEntity(null,
+            CategoryEntity(
+                null,
                 "restaurant",
                 R.drawable.vaccines,
             ),
-            CategoryEntity(null,
+            CategoryEntity(
+                null,
                 "education",
                 R.drawable.vaccines,
             ),
-            CategoryEntity(null,
+            CategoryEntity(
+                null,
                 "clothes",
                 R.drawable.clothes,
             ),
-            CategoryEntity(null,
+            CategoryEntity(
+                null,
                 "pet",
                 R.drawable.cosmetic,
             ),
         )
-        for (item in list){ dao.insertCategory(item)}
+        for (item in list) {
+            dao.insertCategory(item)
+        }
     }
 
     private suspend fun mapFromEntity(categoryEntity: CategoryEntity): Expense {
         return Expense(
             categoryEntity.id,
             categoryEntity.name,
-            categoryEntity.id?.let { getSum(it)},
+            categoryEntity.id?.let { getSum(it) },
             categoryEntity.iconSRC,
         )
     }
@@ -70,7 +85,7 @@ class CategoryRepositoryImpl(val dao: CategoryDao,val transactionDao: Transactio
         )
     }
 
-    private suspend fun getSum(id: Long): Double{
+    private suspend fun getSum(id: Long): Double {
         var sum = 0.0
         val transactions = transactionDao.getTransactionWithCategory(id)
         for (item in transactions) {

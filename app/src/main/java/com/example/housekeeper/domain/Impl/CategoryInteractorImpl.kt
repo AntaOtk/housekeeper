@@ -14,5 +14,8 @@ class CategoryInteractorImpl(val repository: CategoryRepository) : CategoryInter
         return repository.getCategories()
     }
 
+    override fun getAccounts(): Flow<List<Expense>> {
+        return repository.getAccounts()
+    }
 
 }

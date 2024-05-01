@@ -22,8 +22,13 @@ class AddTransactionFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val categories = mutableListOf<Expense>()
-    val adapter = CategoryAdapter(categories) { category ->
+    private val categoriesAdapter = CategoryAdapter(categories) { category ->
         viewModel.setCategory(category)
+    }
+
+    private val accounts = mutableListOf<Expense>()
+    private val accountsAdapter = CategoryAdapter(categories) { account ->
+        viewModel.setAccount(account)
     }
 
 
@@ -40,11 +45,11 @@ class AddTransactionFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.backButton.setOnClickListener { findNavController().popBackStack() }
 
-        val bottomSheetBehavior = BottomSheetBehavior.from(binding.accountBottomSheet).apply {
+        val bottomCategoriesSheetBehavior = BottomSheetBehavior.from(binding.accountBottomSheet).apply {
             state = BottomSheetBehavior.STATE_HIDDEN
         }
 
-        bottomSheetBehavior.addBottomSheetCallback(object :
+        bottomCategoriesSheetBehavior.addBottomSheetCallback(object :
             BottomSheetBehavior.BottomSheetCallback() {
 
             override fun onStateChanged(bottomSheet: View, newState: Int) {
@@ -53,7 +58,7 @@ class AddTransactionFragment : Fragment() {
                     }
 
                     else -> {
-                        viewModel.showAccount()
+                        viewModel.showCategories()
                     }
                 }
             }
@@ -63,9 +68,9 @@ class AddTransactionFragment : Fragment() {
         })
 
         binding.toAccount.setOnClickListener {
-            bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
-
+            bottomCategoriesSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
         }
+
         val sumTextWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
@@ -77,7 +82,7 @@ class AddTransactionFragment : Fragment() {
             }
         }
         sumTextWatcher.let { binding.sumEt.addTextChangedListener(it) }
-        binding.accountRv.adapter = adapter
+        binding.accountRv.adapter = categoriesAdapter
 
         binding.addTransactionButton.setOnClickListener {
             viewModel.addTransaction()
@@ -87,8 +92,8 @@ class AddTransactionFragment : Fragment() {
         viewModel.observeCategoriesLiveData().observe(viewLifecycleOwner) {
             renderCategories(it)
         }
-        viewModel.observeToAccountId().observe(viewLifecycleOwner) {
-            bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+        viewModel.observeToAccount().observe(viewLifecycleOwner) {
+            bottomCategoriesSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
             setCategory(it.name)
         }
         viewModel.observeEnabledState().observe(viewLifecycleOwner){
@@ -103,6 +108,6 @@ class AddTransactionFragment : Fragment() {
     private fun renderCategories(list: List<Expense>) {
         categories.clear()
         categories.addAll(list)
-        adapter.notifyDataSetChanged()
+        categoriesAdapter.notifyDataSetChanged()
     }
 }

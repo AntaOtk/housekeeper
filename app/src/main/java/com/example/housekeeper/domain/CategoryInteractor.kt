@@ -7,4 +7,5 @@ interface CategoryInteractor {
     suspend fun setCategory(category: Expense)
 
     fun getCategories(): Flow<List<Expense>>
+    fun getAccounts(): Flow<List<Expense>>
 }

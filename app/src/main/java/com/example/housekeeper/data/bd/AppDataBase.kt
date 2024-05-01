@@ -7,5 +7,4 @@ import androidx.room.RoomDatabase
 abstract class AppDataBase : RoomDatabase() {
     abstract fun transactionDao(): TransactionDao
     abstract fun categoryDao(): CategoryDao
-
 }
