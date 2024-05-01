@@ -16,10 +16,7 @@ import com.example.housekeeper.presentation.main.ExpenseAdapter.Companion.ACCOUN
 import com.example.housekeeper.presentation.main.ExpenseAdapter.Companion.CATEGORY_ID
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import java.util.Calendar
-import javax.xml.datatype.DatatypeConstants.MONTHS
 
 
 class AddTransactionFragment : Fragment() {
@@ -51,11 +48,12 @@ class AddTransactionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.backButton.setOnClickListener { findNavController().popBackStack() }
-        binding.fromAccount.text =  arguments?.getString(ACCOUNT_ID)
+        binding.fromAccount.text = arguments?.getString(ACCOUNT_ID)
         viewModel.setAccountFromID(arguments?.getString(CATEGORY_ID)?.toLong())
-        val bottomCategoriesSheetBehavior = BottomSheetBehavior.from(binding.accountBottomSheet).apply {
-            state = BottomSheetBehavior.STATE_HIDDEN
-        }
+        val bottomCategoriesSheetBehavior =
+            BottomSheetBehavior.from(binding.accountBottomSheet).apply {
+                state = BottomSheetBehavior.STATE_HIDDEN
+            }
         bottomCategoriesSheetBehavior.addBottomSheetCallback(object :
             BottomSheetBehavior.BottomSheetCallback() {
             override fun onStateChanged(bottomSheet: View, newState: Int) {
@@ -68,6 +66,7 @@ class AddTransactionFragment : Fragment() {
                     }
                 }
             }
+
             override fun onSlide(bottomSheet: View, slideOffset: Float) {
             }
         })
@@ -102,21 +101,28 @@ class AddTransactionFragment : Fragment() {
             bottomCategoriesSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
             setCategory(it.name)
         }
-        viewModel.observeEnabledState().observe(viewLifecycleOwner){
-            binding.addTransactionButton.isEnabled =it
+        viewModel.observeEnabledState().observe(viewLifecycleOwner) {
+            binding.addTransactionButton.isEnabled = it
         }
     }
 
     private fun setData() {
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
-        val month = c.get(Calendar.MONTH)
+        val month = c.get(Calendar.MONTH) + 1
         val day = c.get(Calendar.DAY_OF_MONTH)
         binding.etData.setText("$day.$month.$year")
         binding.etData.setOnClickListener {
-            val dpd = DatePickerDialog(requireContext(), DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
-                binding.etData.setText("$dayOfMonth.$month.$year")
-            }, year, month, day)
+            val dpd = DatePickerDialog(
+                requireContext(),
+                DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
+                    val currentMonth = month + 1
+                    binding.etData.setText("$dayOfMonth.$currentMonth.$year")
+                },
+                year,
+                month-1,
+                day
+            )
             dpd.show()
         }
     }
