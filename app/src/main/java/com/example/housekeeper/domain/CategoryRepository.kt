@@ -8,5 +8,6 @@ interface CategoryRepository {
     fun getCategories(): Flow<List<Expense>>
     suspend fun setBaseCategories()
     fun getAccounts(): Flow<List<Expense>>
+    fun getCategory(id: Long): Flow<Expense>
 
 }

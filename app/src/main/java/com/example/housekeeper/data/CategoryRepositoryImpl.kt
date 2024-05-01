@@ -9,7 +9,10 @@ import com.example.housekeeper.domain.model.Expense
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class CategoryRepositoryImpl(private val dao: CategoryDao, private val transactionDao: TransactionDao) :
+class CategoryRepositoryImpl(
+    private val dao: CategoryDao,
+    private val transactionDao: TransactionDao
+) :
     CategoryRepository {
     override suspend fun setCategory(category: Expense) {
         dao.insertCategory(mapToEntity(category))
@@ -23,6 +26,10 @@ class CategoryRepositoryImpl(private val dao: CategoryDao, private val transacti
     override fun getAccounts(): Flow<List<Expense>> = flow {
         val categories = dao.getCategories()
         emit(categories.map { category -> mapFromEntity(category) })
+    }
+
+    override fun getCategory(id: Long): Flow<Expense> = flow {
+        emit(mapFromEntity(dao.getCategory(id)))
     }
 
     override suspend fun setBaseCategories() {

@@ -11,6 +11,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.housekeeper.databinding.FragmentCalculatorBinding
 import com.example.housekeeper.domain.model.Expense
+import com.example.housekeeper.presentation.main.ExpenseAdapter.Companion.ACCOUNT_ID
+import com.example.housekeeper.presentation.main.ExpenseAdapter.Companion.CATEGORY_ID
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -20,7 +22,6 @@ class AddTransactionFragment : Fragment() {
 
     private var _binding: FragmentCalculatorBinding? = null
     private val binding get() = _binding!!
-
     private val categories = mutableListOf<Expense>()
     private val categoriesAdapter = CategoryAdapter(categories) { category ->
         viewModel.setCategory(category)
@@ -44,7 +45,8 @@ class AddTransactionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.backButton.setOnClickListener { findNavController().popBackStack() }
-
+        binding.fromAccount.text =  arguments?.getString(ACCOUNT_ID)
+        viewModel.setAccountFromID(arguments?.getString(CATEGORY_ID)?.toLong())
         val bottomCategoriesSheetBehavior = BottomSheetBehavior.from(binding.accountBottomSheet).apply {
             state = BottomSheetBehavior.STATE_HIDDEN
         }

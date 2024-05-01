@@ -66,13 +66,13 @@ class MainFragment : Fragment() {
 
     private val accounts = listOf<Expense>(
         Expense(
-            null,
+            1,
             "1",
             2.3,
             R.drawable.euro,
         ),
         Expense(
-            null,
+            2,
             "2",
             12.3,
             R.drawable.euro,

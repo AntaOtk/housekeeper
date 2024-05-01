@@ -2,6 +2,7 @@ package com.example.housekeeper.presentation.main
 
 import android.content.ClipData
 import android.content.ClipDescription
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -74,7 +75,10 @@ class AccountAdapter(
             icon.setImageResource(model.image)
 
             icon.setOnLongClickListener { v ->
-                val item = ClipData.Item(v.tag as? CharSequence)
+                val item = ClipData.Item(model.id.toString())
+                Log.d("drag","model.id ${model.id}")
+                Log.d("drag","dragData $item")
+
 
                 // Create a new ClipData using the tag as a label, the plain text
                 // MIME type, and the already-created item. This creates a new
@@ -85,6 +89,8 @@ class AccountAdapter(
                     arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN),
                     item
                 )
+                Log.d("drag","dragData $dragData")
+
 
                 // Instantiate the drag shadow builder.
                 val myShadow = object : View.DragShadowBuilder(v) {}
