@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="accaunts"
+        android:text="@string/accounts"
         android:layout_margin="@dimen/classic_padding"/>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -31,7 +31,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="expenses"
+        android:text="@string/expenses"
         android:layout_margin="@dimen/classic_padding"/>
 
     <androidx.recyclerview.widget.RecyclerView
