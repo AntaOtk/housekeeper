@@ -9,8 +9,8 @@ import com.example.housekeeper.domain.TransactionInteractor
 import org.koin.dsl.module
 
 val interactorModule = module {
-    single<CategoryInteractor>{ CategoryInteractorImpl(get()) }
-    single<TransactionInteractor> { TransactionInteractorImpl(get()) }
-    single<BaseInteractor> { BaseInteractorImpl(get(),get()) }
+    single<CategoryInteractor>{ CategoryInteractorImpl(get(),get()) }
+    single<TransactionInteractor> { TransactionInteractorImpl(get(),get(),get()) }
+    single<BaseInteractor> { BaseInteractorImpl(get(),get(),get()) }
 
 }

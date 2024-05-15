@@ -20,6 +20,11 @@ val dataModule = module {
     }
 
     single {
+        Room.databaseBuilder(androidContext(), AppDataBase::class.java, "database.db")
+            .build().accountDao()
+    }
+
+    single {
         androidContext()
             .getSharedPreferences("local_storage", Context.MODE_PRIVATE)
     }

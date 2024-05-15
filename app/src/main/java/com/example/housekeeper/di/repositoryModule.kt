@@ -1,7 +1,9 @@
 package com.example.housekeeper.di
 
+import com.example.housekeeper.data.AccountRepositoryImpl
 import com.example.housekeeper.data.CategoryRepositoryImpl
 import com.example.housekeeper.data.TransactionRepositoryImpl
+import com.example.housekeeper.domain.AccountRepository
 import com.example.housekeeper.domain.BaseRepository
 import com.example.housekeeper.domain.BaseRepositoryImpl
 import com.example.housekeeper.domain.CategoryRepository
@@ -12,4 +14,6 @@ val repositoryModule = module {
     single<CategoryRepository> { CategoryRepositoryImpl(get(),get()) }
     single<BaseRepository> { BaseRepositoryImpl(get()) }
     single<TransactionRepository> { TransactionRepositoryImpl(get()) }
+    single<AccountRepository> { AccountRepositoryImpl(get(),get()) }
+
 }

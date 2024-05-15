@@ -15,9 +15,6 @@
         <action
             android:id="@+id/action_mainFragment_to_categoryConstructorFragment"
             app:destination="@id/categoryConstructorFragment" />
-        <action
-            android:id="@+id/action_mainFragment_to_statisticFragment"
-            app:destination="@id/statisticFragment" />
     </fragment>
     <fragment
         android:id="@+id/calculatorFragment"
@@ -34,4 +31,9 @@
         android:name="com.example.housekeeper.presentation.statistic.StatisticFragment"
         android:label="fragment_statistic"
         tools:layout="@layout/fragment_statistic" />
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.example.housekeeper.presentation.setting.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" />
 </navigation>

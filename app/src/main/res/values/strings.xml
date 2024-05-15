@@ -2,4 +2,10 @@
     <string name="app_name">housekeeper</string>
     <string name="sum">0</string>
     <string name="add">Добавить</string>
+    <string name="set_theme">Set dark theme\n</string>
+    <string name="set_first_day_of_period">set the first day of the period</string>
+    <string name="add_account">Add account</string>
+    <string name="add_category">add_category</string>
+    <string name="accounts">accounts</string>
+    <string name="expenses">expenses</string>
 </resources>

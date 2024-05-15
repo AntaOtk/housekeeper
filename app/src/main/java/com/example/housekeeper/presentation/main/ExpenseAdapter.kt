@@ -7,7 +7,6 @@ import android.view.DragEvent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -96,64 +95,37 @@ class ExpenseAdapter(
                     }
 
                     DragEvent.ACTION_DROP -> {
-                        // Get the item containing the dragged data.
                         val item: ClipData.Item = e.clipData.getItemAt(0)
-
-                        // Get the text data from the item.
                         val dragData = item.text
-
-                        // Display a message containing the dragged data.
-                        val bundle = bundleOf(ID to dragData)
+                        val bundle = bundleOf(ACCOUNT_ID to dragData)
+                        bundle.putString(CATEGORY_ID, model.id.toString())
                         v.findNavController()
                             .navigate(R.id.action_mainFragment_to_calculatorFragment, bundle)
-
                         (v as? ImageView)?.clearColorFilter()
-
-                        // Invalidate the view to force a redraw.
                         v.invalidate()
 
                         true
                     }
 
                     DragEvent.ACTION_DRAG_ENDED -> {
-                        // Turn off color tinting.
                         (v as? ImageView)?.clearColorFilter()
-
-                        // Invalidate the view to force a redraw.
                         v.invalidate()
-
-                        // Do a getResult() and display what happens.
-                        when (e.result) {
-                            true ->
-                                Toast.makeText(
-                                    icon.context,
-                                    "The drop was handled.",
-                                    Toast.LENGTH_LONG
-                                )
-
-                            else ->
-                                Toast.makeText(
-                                    icon.context,
-                                    "The drop didn't work.",
-                                    Toast.LENGTH_LONG
-                                )
-                        }.show()
-
-                        // Return true. The value is ignored.
                         true
                     }
 
                     else -> {
-                        // An unknown action type is received.
                         false
                     }
                 }
             }
+
         }
     }
 
     companion object {
-        const val ID = "id"
+        const val ACCOUNT_ID = "account_id"
+        const val CATEGORY_ID = "category_id"
+
     }
 }
 

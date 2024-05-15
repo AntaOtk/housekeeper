@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/item_button"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="@color/hell_gray"
         android:src="@drawable/plus"
         android:layout_gravity="center"
         android:padding="@dimen/size_category"/>

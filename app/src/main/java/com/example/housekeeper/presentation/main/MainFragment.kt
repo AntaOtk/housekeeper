@@ -13,12 +13,16 @@ import com.example.housekeeper.domain.model.Expense
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainFragment : Fragment() {
-    val viewModel by viewModel<MainViewModel>()
+    private val viewModel by viewModel<MainViewModel>()
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
     private lateinit var addCategory: () -> Unit
     private val expenses = mutableListOf<Expense>()
+    private val accounts = mutableListOf<Expense>()
     private val expenseAdapter = ExpenseAdapter(expenses) {
+        addCategory()
+    }
+    private val accountsAdapter = AccountAdapter(accounts) {
         addCategory()
     }
 
@@ -33,9 +37,13 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.getAccounts()
         viewModel.getCategories()
         viewModel.observeCategoryLiveData().observe(viewLifecycleOwner) {
-            render(it)
+            renderCategories(it)
+        }
+        viewModel.observeAccountLiveData().observe(viewLifecycleOwner) {
+            renderAccounts(it)
         }
         addCategory =
             { findNavController().navigate(R.id.action_mainFragment_to_categoryConstructorFragment) }
@@ -44,13 +52,7 @@ class MainFragment : Fragment() {
         binding.rvCategory.layoutManager =
             GridLayoutManager(requireContext(), 4, GridLayoutManager.VERTICAL, false)
         binding.rvCategory.adapter = expenseAdapter
-        binding.rvAccount.adapter = AccountAdapter(accounts,addCategory)
-        binding.includedToolbar.addTransactionButton.setOnClickListener {
-            findNavController().navigate(R.id.action_mainFragment_to_calculatorFragment)
-        }
-        binding.includedToolbar.statisticButton.setOnClickListener {
-            findNavController().navigate(R.id.action_mainFragment_to_statisticFragment)
-        }
+        binding.rvAccount.adapter = accountsAdapter
     }
 
     override fun onDestroyView() {
@@ -58,26 +60,16 @@ class MainFragment : Fragment() {
         _binding = null
     }
 
-    private fun render(categories: List<Expense>) {
+    private fun renderCategories(categories: List<Expense>) {
         expenses.clear()
         expenses.addAll(categories)
         expenseAdapter.notifyDataSetChanged()
     }
 
-    private val accounts = listOf<Expense>(
-        Expense(
-            null,
-            "1",
-            2.3,
-            R.drawable.euro,
-        ),
-        Expense(
-            null,
-            "2",
-            12.3,
-            R.drawable.euro,
-        )
-
-    )
+    private fun renderAccounts(result: List<Expense>) {
+        accounts.clear()
+        accounts.addAll(result)
+        accountsAdapter.notifyDataSetChanged()
+    }
 
 }

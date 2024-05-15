@@ -19,6 +19,12 @@
         <item name="android:padding">12dp</item>
     </style>
 
+    <style name="defaultText">
+        <item name="android:textColor">?attr/colorOnSecondary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
     <style name="EditTextStyle">
         <item name="android:background">@color/light_gray</item>
         <item name="android:textColor">@color/black</item>
@@ -26,9 +32,6 @@
         <item name="android:maxLength">30</item>
         <item name="android:maxLines">1</item>
         <item name="android:textColorHint">@color/gray</item>
-
-
-
     </style>
 
 
