@@ -15,7 +15,7 @@ class CategoryInteractorImpl(private val categoryRepository: CategoryRepository,
         return categoryRepository.getCategories()
     }
 
-    override fun getAccounts(): Flow<List<Expense>> {
+    override suspend fun getAccounts(): List<Expense> {
         return accountRepository.getAccounts()
     }
 }

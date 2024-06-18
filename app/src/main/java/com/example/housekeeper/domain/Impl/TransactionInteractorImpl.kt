@@ -21,7 +21,7 @@ class TransactionInteractorImpl(
         return categoryRepository.getCategory(id)
     }
 
-    override fun getAccount(id: Long): Flow<Expense> {
+    override suspend fun getAccount(id: Long): Expense {
         return accountRepository.getAccount(id)
     }
 }

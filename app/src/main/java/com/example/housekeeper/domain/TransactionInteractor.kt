@@ -7,5 +7,5 @@ import kotlinx.coroutines.flow.Flow
 interface TransactionInteractor {
     suspend fun setTransaction(transaction: Transaction)
     fun getCategory(id: Long): Flow<Expense>
-    fun getAccount(id: Long): Flow<Expense>
+    suspend fun getAccount(id: Long): Expense
 }

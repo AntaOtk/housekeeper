@@ -6,6 +6,6 @@ import kotlinx.coroutines.flow.Flow
 interface BaseInteractor {
     fun getCategories(): Flow<List<Expense>>
 
-     fun getAccounts(): Flow<List<Expense>>
+    suspend fun getAccounts(): List<Expense>
     suspend fun checkFirstStart()
 }

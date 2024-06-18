@@ -15,5 +15,4 @@ val repositoryModule = module {
     single<BaseRepository> { BaseRepositoryImpl(get()) }
     single<TransactionRepository> { TransactionRepositoryImpl(get()) }
     single<AccountRepository> { AccountRepositoryImpl(get(),get()) }
-
 }

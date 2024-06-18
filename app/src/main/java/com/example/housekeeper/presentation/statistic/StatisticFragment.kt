@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.housekeeper.databinding.FragmentStatisticBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class StatisticFragment : Fragment() {
+class StatisticFragment() : Fragment() {
     private var _binding: FragmentStatisticBinding? = null
+    private val viewModel by viewModel<StatisticViewModel>()
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -18,5 +20,10 @@ class StatisticFragment : Fragment() {
     ): View {
         _binding = FragmentStatisticBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.chart.items = viewModel.getStatistic()
     }
 }
