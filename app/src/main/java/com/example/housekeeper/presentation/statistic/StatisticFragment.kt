@@ -24,6 +24,6 @@ class StatisticFragment() : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.chart.items = viewModel.getStatistic()
+        viewModel.getStatistic()
     }
 }
