@@ -1,4 +1,4 @@
-package com.example.housekeeper.domain.Impl
+package com.example.housekeeper.domain.impl
 
 import com.example.housekeeper.domain.AccountRepository
 import com.example.housekeeper.domain.CategoryInteractor
@@ -6,7 +6,10 @@ import com.example.housekeeper.domain.CategoryRepository
 import com.example.housekeeper.domain.model.Expense
 import kotlinx.coroutines.flow.Flow
 
-class CategoryInteractorImpl(private val categoryRepository: CategoryRepository, private val accountRepository: AccountRepository ) : CategoryInteractor {
+class CategoryInteractorImpl(
+    private val categoryRepository: CategoryRepository,
+    private val accountRepository: AccountRepository
+) : CategoryInteractor {
     override suspend fun setCategory(category: Expense) {
         categoryRepository.setCategory(category)
     }
@@ -15,7 +18,7 @@ class CategoryInteractorImpl(private val categoryRepository: CategoryRepository,
         return categoryRepository.getCategories()
     }
 
-    override suspend fun getAccounts(): List<Expense> {
+    override fun getAccounts(): Flow<List<Expense>> {
         return accountRepository.getAccounts()
     }
 }

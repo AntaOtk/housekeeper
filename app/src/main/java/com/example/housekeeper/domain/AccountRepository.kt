@@ -6,6 +6,6 @@ import kotlinx.coroutines.flow.Flow
 interface AccountRepository {
     suspend fun setAccount(account: Expense)
     suspend fun setBaseAccounts()
-    suspend fun getAccounts(): List<Expense>
-    suspend fun getAccount(id: Long): Expense
+     fun getAccounts(): Flow<List<Expense>>
+     fun getAccount(id: Long): Flow<Expense>
 }

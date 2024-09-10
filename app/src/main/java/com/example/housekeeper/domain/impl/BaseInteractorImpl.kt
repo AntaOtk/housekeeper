@@ -1,4 +1,4 @@
-package com.example.housekeeper.domain.Impl
+package com.example.housekeeper.domain.impl
 
 import com.example.housekeeper.domain.AccountRepository
 import com.example.housekeeper.domain.BaseInteractor
@@ -16,7 +16,7 @@ class BaseInteractorImpl(
         return categoryRepository.getCategories()
     }
 
-    override suspend fun getAccounts(): List<Expense> {
+    override fun getAccounts(): Flow<List<Expense>> {
         return accountRepository.getAccounts()
     }
 

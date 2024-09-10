@@ -4,7 +4,6 @@ import com.example.housekeeper.data.bd.TransactionDao
 import com.example.housekeeper.data.bd.TransactionEntity
 import com.example.housekeeper.domain.TransactionRepository
 import com.example.housekeeper.domain.model.Transaction
-import java.sql.Timestamp
 import java.time.LocalDate
 
 class TransactionRepositoryImpl(private val dao: TransactionDao) : TransactionRepository {
@@ -13,14 +12,14 @@ class TransactionRepositoryImpl(private val dao: TransactionDao) : TransactionRe
         dao.insertTransaction(transactionEntity)
     }
 
-    override suspend fun getStatisticOfPeriod(period: List<LocalDate>, categoryID: Long): Long {
-      return dao.getTransactionSum(categoryID, Timestamp.valueOf(period[0].toString()) , Timestamp.valueOf(period[1].toString()))
+    override suspend fun getStatisticOfPeriod(period: List<LocalDate>, categoryID: Long): Double {
+        return dao.getTransactionSum(categoryID, period[0].toEpochDay(), period[1].toEpochDay())
     }
 
     private fun mapTransactionToEntity(transaction: Transaction): TransactionEntity {
         return TransactionEntity(
             null,
-            transaction.date,
+            transaction.date.toEpochDay(),
             transaction.sum.toDouble(),
             transaction.toId,
             transaction.fromId

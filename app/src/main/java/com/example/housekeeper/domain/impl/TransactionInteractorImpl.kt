@@ -1,4 +1,4 @@
-package com.example.housekeeper.domain.Impl
+package com.example.housekeeper.domain.impl
 
 import com.example.housekeeper.domain.AccountRepository
 import com.example.housekeeper.domain.CategoryRepository
@@ -11,9 +11,10 @@ import kotlinx.coroutines.flow.Flow
 class TransactionInteractorImpl(
     private val repository: TransactionRepository,
     private val categoryRepository: CategoryRepository,
-    private val accountRepository: AccountRepository): TransactionInteractor {
+    private val accountRepository: AccountRepository
+) : TransactionInteractor {
 
-    override suspend fun setTransaction(transaction: Transaction){
+    override suspend fun setTransaction(transaction: Transaction) {
         repository.setTransaction(transaction)
     }
 
@@ -21,7 +22,7 @@ class TransactionInteractorImpl(
         return categoryRepository.getCategory(id)
     }
 
-    override suspend fun getAccount(id: Long): Expense {
+    override fun getAccount(id: Long): Flow<Expense> {
         return accountRepository.getAccount(id)
     }
 }

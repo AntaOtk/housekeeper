@@ -9,7 +9,7 @@ import com.example.housekeeper.domain.TransactionInteractor
 import com.example.housekeeper.domain.model.Expense
 import com.example.housekeeper.domain.model.Transaction
 import kotlinx.coroutines.launch
-import java.time.LocalDateTime
+import java.time.LocalDate
 
 class AddTransactionViewModel(
     private val interactor: TransactionInteractor,
@@ -32,7 +32,7 @@ class AddTransactionViewModel(
         viewModelScope.launch {
             interactor.setTransaction(
                 Transaction(
-                    LocalDateTime.now().toString(),
+                    LocalDate.now(),
                     actualSum,
                     fromAccount.value?.id,
                     toAccount.value?.id

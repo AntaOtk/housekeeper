@@ -1,9 +1,10 @@
 package com.example.housekeeper.domain.model
 
-import java.sql.Timestamp
+import java.time.LocalDate
+
 
 data class Transaction(
-    val date: Timestamp,
+    val date: LocalDate,
     val sum: String,
     val toId:Long?,
     val fromId: Long?,

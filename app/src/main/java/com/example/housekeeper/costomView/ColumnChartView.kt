@@ -68,7 +68,7 @@ class ColumnChartView @JvmOverloads constructor(
 
             RectF(
                 centerX- barWidth / 2F,
-                levelY(item.value),
+                levelY(item.value.toLong()),
                 centerX + barWidth / 2F,
                 minLevelY
             )

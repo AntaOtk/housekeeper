@@ -5,6 +5,6 @@ import java.time.LocalDate
 
 interface TransactionRepository {
     suspend fun setTransaction(transaction: Transaction)
-    suspend fun getStatisticOfPeriod(period: List<LocalDate>, categoryID: Long): Long
+    suspend fun getStatisticOfPeriod(period: List<LocalDate>, categoryID: Long): Double
 
 }

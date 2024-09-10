@@ -1,4 +1,4 @@
-package com.example.housekeeper.domain.Impl
+package com.example.housekeeper.domain.impl
 
 import com.example.housekeeper.costomView.model.Item
 import com.example.housekeeper.domain.AccountRepository
@@ -11,18 +11,21 @@ class StatisticInteractorImpl(
     private val transactionRepository: TransactionRepository,
     private val accountRepository: AccountRepository
 ) : StatisticInteractor {
+    private var accountSum = mutableListOf<StatisticDate>()
+
     override suspend fun getStatistic(period: List<LocalDate>): List<Item> {
-        val accountSum =
-            accountRepository.getAccounts().map { account -> StatisticDate(0, account) }
+        accountRepository.getAccounts().collect { list ->
+            accountSum.addAll(list.map { account -> StatisticDate(0.0, account) })
+        }
         for (account in accountSum) {
             account.value =
-                account.category.id?.let { transactionRepository.getStatisticOfPeriod(period, it) }
-                    ?: 0
+                (account.category.id?.let { transactionRepository.getStatisticOfPeriod(period, it) }
+                    ?: 0) as Double
         }
         return accountSum.map { item -> mapToItem(item) }
     }
 
-    fun mapToItem(date: StatisticDate): Item {
+    private fun mapToItem(date: StatisticDate): Item {
         return Item(date.value, date.category)
     }
 }
