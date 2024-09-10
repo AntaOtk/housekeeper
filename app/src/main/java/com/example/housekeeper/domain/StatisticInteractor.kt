@@ -7,5 +7,5 @@ import java.time.LocalDate
 
 
 interface StatisticInteractor {
-    suspend fun getStatistic(period: List<LocalDate>): List<StatisticDate>
+    suspend fun getStatistic(period: List<LocalDate>): List<Item>
 }

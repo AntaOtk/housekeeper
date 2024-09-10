@@ -55,8 +55,6 @@ class AccountAdapter(
             btn.setOnClickListener {
                 addAccount.invoke()
             }
-
-
         }
     }
 

@@ -25,7 +25,7 @@ class StatisticViewModel(private val interactor: StatisticInteractor) : ViewMode
 
     fun getStatistic() {
         viewModelScope.launch {
-            interactor.getStatistic(period)
+            statisticLiveData.postValue(interactor.getStatistic(period))
         }
     }
 

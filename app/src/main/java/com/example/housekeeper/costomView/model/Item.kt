@@ -1,6 +1,8 @@
 package com.example.housekeeper.costomView.model
 
+import com.example.housekeeper.domain.model.Expense
+
 data class Item(
-    val value: Int,
-    val category: String
+    val value: Long,
+    val category: Expense
 )

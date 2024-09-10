@@ -52,19 +52,19 @@ class ColumnChartView @JvmOverloads constructor(
     private var maxLevelY: Float = 0F
     private var minLevelY: Float = 0F
 
-    private fun levelY(value: Int): Float {
+    private fun levelY(value: Long): Float {
         val levelRate = value / items.maxOf { it.value }.toFloat()
         return minLevelY - (minLevelY - maxLevelY) * levelRate
     }
 
     private var chartItemWidth: Float = 0F
-    private fun barX(number: Int): Float {
+    private fun barX(number: Long): Float {
         return chartItemWidth * number + chartItemWidth / 2
     }
 
     private val bars: Map<Item, RectF> by lazy {
         items.associateWith { item ->
-            val centerX = barX(item.category)
+            val centerX = barX(item.category.id ?: 0)
 
             RectF(
                 centerX- barWidth / 2F,
