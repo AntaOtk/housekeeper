@@ -8,4 +8,5 @@
     <string name="add_category">add_category</string>
     <string name="accounts">accounts</string>
     <string name="expenses">expenses</string>
+    <string name="add_limits">add limits</string>
 </resources>

@@ -22,6 +22,7 @@ class ConstructorViewModel(val interactor: CategoryInteractor) : ViewModel() {
                     null,
                     nameLiveData.value ?: "",
                     null,
+                    null,
                     imageLiveData.value ?: R.drawable.home,
                 )
             )

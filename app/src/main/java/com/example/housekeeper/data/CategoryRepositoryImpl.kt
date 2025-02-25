@@ -33,37 +33,44 @@ class CategoryRepositoryImpl(
                 null,
                 "home",
                 R.drawable.home,
-            ),
+                null,
+                ),
             CategoryEntity(
                 null,
                 "transport",
                 R.drawable.car_servise,
-            ),
+                null,
+                ),
             CategoryEntity(
                 null,
                 "product",
                 R.drawable.cosmetic,
-            ),
+                null,
+                ),
             CategoryEntity(
                 null,
                 "restaurant",
                 R.drawable.vaccines,
-            ),
+                null,
+                ),
             CategoryEntity(
                 null,
                 "education",
                 R.drawable.vaccines,
-            ),
+                null,
+                ),
             CategoryEntity(
                 null,
                 "clothes",
                 R.drawable.clothes,
-            ),
+                null,
+                ),
             CategoryEntity(
                 null,
                 "pet",
                 R.drawable.cosmetic,
-            ),
+                null,
+                ),
         )
         for (item in list) {
             dao.insertCategory(item)
@@ -73,10 +80,11 @@ class CategoryRepositoryImpl(
     private suspend fun mapFromEntity(categoryEntity: CategoryEntity): Expense {
         return Expense(
             categoryEntity.id,
-            categoryEntity.name,
+            categoryEntity.categoryName,
             categoryEntity.id?.let { getSum(it) },
+            categoryEntity.limit,
             categoryEntity.iconSRC,
-        )
+            )
     }
 
     private fun mapToEntity(category: Expense): CategoryEntity {
@@ -84,6 +92,7 @@ class CategoryRepositoryImpl(
             category.id,
             category.name,
             category.image,
+            category.planingSum
         )
     }
 

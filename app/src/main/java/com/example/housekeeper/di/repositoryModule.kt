@@ -5,7 +5,7 @@ import com.example.housekeeper.data.CategoryRepositoryImpl
 import com.example.housekeeper.data.TransactionRepositoryImpl
 import com.example.housekeeper.domain.AccountRepository
 import com.example.housekeeper.domain.BaseRepository
-import com.example.housekeeper.domain.BaseRepositoryImpl
+import com.example.housekeeper.data.BaseRepositoryImpl
 import com.example.housekeeper.domain.CategoryRepository
 import com.example.housekeeper.domain.TransactionRepository
 import org.koin.dsl.module
