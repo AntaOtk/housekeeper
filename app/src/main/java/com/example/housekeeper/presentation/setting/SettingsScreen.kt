@@ -13,7 +13,7 @@ fun SettingsScreen(modifier: Modifier = Modifier) {
     Column(modifier = modifier.fillMaxSize()) {
         SettingsButton(stringResource(R.string.add_account)) {}
         SettingsButton(stringResource(R.string.add_category)) {}
-        SettingsButton(stringResource(R.string.add_limits)) {}
+        SettingsButton(stringResource(R.string.add_limits)) { }
         SettingsButton(stringResource(R.string.add_account)) {}
     }
 }

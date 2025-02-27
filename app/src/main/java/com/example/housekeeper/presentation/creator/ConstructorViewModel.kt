@@ -21,7 +21,7 @@ class ConstructorViewModel(val interactor: CategoryInteractor) : ViewModel() {
                 Expense(
                     null,
                     nameLiveData.value ?: "",
-                    null,
+                    0.0,
                     null,
                     imageLiveData.value ?: R.drawable.home,
                 )

@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface CategoryRepository {
     suspend fun setCategory(category: Expense)
-    fun getCategories(): Flow<List<Expense>>
+    suspend fun getCategories(): List<Expense>
     suspend fun setBaseCategories()
     fun getCategory(id: Long): Flow<Expense>
 }

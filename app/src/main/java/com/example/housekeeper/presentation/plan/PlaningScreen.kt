@@ -8,11 +8,11 @@ import com.example.housekeeper.compose.StatisticCart
 import com.example.housekeeper.domain.model.Expense
 
 @Composable
-fun PlanScreen() {
+fun PlaningScreen() {
     val categoryList = remember { mutableStateOf(listOf<Expense>()) }
     Column {
         for (item in categoryList.value) {
-            StatisticCart(item.name, item.sum ?: 0.0, item.planingSum ?: 0.0)
+            StatisticCart(item.name, item.sum, item.planingSum ?: 0.0)
         }
     }
 }

@@ -50,7 +50,7 @@ class AccountRepositoryImpl(
         return Expense(
             accountEntity.id,
             accountEntity.name,
-            accountEntity.id?.let { getSum(it) },
+            accountEntity.id?.let { getSum(it) } ?: 0.0,
             null,
             accountEntity.iconSRC,
         )

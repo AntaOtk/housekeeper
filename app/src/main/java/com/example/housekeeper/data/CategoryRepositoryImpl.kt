@@ -18,9 +18,9 @@ class CategoryRepositoryImpl(
         dao.insertCategory(mapToEntity(category))
     }
 
-    override fun getCategories(): Flow<List<Expense>> = flow {
+    override suspend fun getCategories(): List<Expense> {
         val categories = dao.getCategories()
-        emit(categories.map { category -> mapFromEntity(category) })
+        return (categories.map { category -> mapFromEntity(category) })
     }
 
     override fun getCategory(id: Long): Flow<Expense> = flow {
@@ -34,43 +34,43 @@ class CategoryRepositoryImpl(
                 "home",
                 R.drawable.home,
                 null,
-                ),
+            ),
             CategoryEntity(
                 null,
                 "transport",
                 R.drawable.car_servise,
                 null,
-                ),
+            ),
             CategoryEntity(
                 null,
                 "product",
                 R.drawable.cosmetic,
                 null,
-                ),
+            ),
             CategoryEntity(
                 null,
                 "restaurant",
                 R.drawable.vaccines,
                 null,
-                ),
+            ),
             CategoryEntity(
                 null,
                 "education",
                 R.drawable.vaccines,
                 null,
-                ),
+            ),
             CategoryEntity(
                 null,
                 "clothes",
                 R.drawable.clothes,
                 null,
-                ),
+            ),
             CategoryEntity(
                 null,
                 "pet",
                 R.drawable.cosmetic,
                 null,
-                ),
+            ),
         )
         for (item in list) {
             dao.insertCategory(item)
@@ -81,10 +81,10 @@ class CategoryRepositoryImpl(
         return Expense(
             categoryEntity.id,
             categoryEntity.categoryName,
-            categoryEntity.id?.let { getSum(it) },
+            categoryEntity.id?.let { getSum(it) } ?: 0.0,
             categoryEntity.limit,
             categoryEntity.iconSRC,
-            )
+        )
     }
 
     private fun mapToEntity(category: Expense): CategoryEntity {

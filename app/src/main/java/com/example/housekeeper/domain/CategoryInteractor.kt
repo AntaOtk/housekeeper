@@ -8,4 +8,6 @@ interface CategoryInteractor {
 
     fun getCategories(): Flow<List<Expense>>
     fun getAccounts(): Flow<List<Expense>>
+
+    fun getCategoriesForStatistic(): Flow<Pair<List<Expense>, Double>>
 }

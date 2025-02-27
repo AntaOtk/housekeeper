@@ -5,10 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.housekeeper.domain.BaseInteractor
+import com.example.housekeeper.domain.CategoryInteractor
 import com.example.housekeeper.domain.model.Expense
 import kotlinx.coroutines.launch
 
-class MainViewModel(val interactor: BaseInteractor) : ViewModel() {
+class MainViewModel(val interactor: CategoryInteractor, val baseInteractor: BaseInteractor,) : ViewModel() {
     private val accountLiveData = MutableLiveData<List<Expense>>()
     fun observeAccountLiveData(): LiveData<List<Expense>> = accountLiveData
     private val categoryLiveData = MutableLiveData<List<Expense>>()
@@ -36,7 +37,7 @@ class MainViewModel(val interactor: BaseInteractor) : ViewModel() {
 
     private fun checkFirstStart() {
         viewModelScope.launch {
-            interactor.checkFirstStart()
+            baseInteractor.checkFirstStart()
             getAccounts()
             getCategories()
         }
