@@ -16,7 +16,7 @@ class CategoryInteractorImpl(
     }
 
     override fun getCategories(): Flow<List<Expense>> = flow {
-        emit(categoryRepository.getCategories())
+        emit(categoryRepository.getAllCategories())
     }
 
     override fun getAccounts(): Flow<List<Expense>> {

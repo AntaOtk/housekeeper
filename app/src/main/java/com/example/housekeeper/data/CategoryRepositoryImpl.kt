@@ -1,11 +1,11 @@
 package com.example.housekeeper.data
 
-import com.example.housekeeper.R
 import com.example.housekeeper.data.bd.CategoryDao
 import com.example.housekeeper.data.bd.CategoryEntity
 import com.example.housekeeper.data.bd.TransactionDao
 import com.example.housekeeper.domain.CategoryRepository
 import com.example.housekeeper.domain.model.Expense
+import com.example.housekeeper.util.Constants
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -18,7 +18,7 @@ class CategoryRepositoryImpl(
         dao.insertCategory(mapToEntity(category))
     }
 
-    override suspend fun getCategories(): List<Expense> {
+    override suspend fun getAllCategories(): List<Expense> {
         val categories = dao.getCategories()
         return (categories.map { category -> mapFromEntity(category) })
     }
@@ -27,52 +27,19 @@ class CategoryRepositoryImpl(
         emit(mapFromEntity(dao.getCategory(id)))
     }
 
+    override suspend fun getCategories(): List<Expense> {
+        val categories = mutableListOf<Expense>()
+        val allCategories = dao.getCategories()
+        for (category in allCategories) {
+            val item = mapFromEntity(category)
+            if (item.sum > 0) categories.add(item)
+        }
+        return categories
+    }
+
+
     override suspend fun setBaseCategories() {
-        val list = listOf(
-            CategoryEntity(
-                null,
-                "home",
-                R.drawable.home,
-                null,
-            ),
-            CategoryEntity(
-                null,
-                "transport",
-                R.drawable.car_servise,
-                null,
-            ),
-            CategoryEntity(
-                null,
-                "product",
-                R.drawable.cosmetic,
-                null,
-            ),
-            CategoryEntity(
-                null,
-                "restaurant",
-                R.drawable.vaccines,
-                null,
-            ),
-            CategoryEntity(
-                null,
-                "education",
-                R.drawable.vaccines,
-                null,
-            ),
-            CategoryEntity(
-                null,
-                "clothes",
-                R.drawable.clothes,
-                null,
-            ),
-            CategoryEntity(
-                null,
-                "pet",
-                R.drawable.cosmetic,
-                null,
-            ),
-        )
-        for (item in list) {
+        for (item in Constants.firstCategoryList) {
             dao.insertCategory(item)
         }
     }

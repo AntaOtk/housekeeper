@@ -1,12 +1,11 @@
 package com.example.housekeeper.navigation
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.housekeeper.presentation.main.MainScreen
 import com.example.housekeeper.presentation.plan.PlaningScreen
 import com.example.housekeeper.presentation.setting.SettingsScreen
 import com.example.housekeeper.presentation.statistic.StatisticScreen
@@ -21,9 +20,7 @@ fun AppNavGraph(
         startDestination = "home"
     ) {
         composable(Routes.Home.route) {
-            Box(modifier = modifier) {
-                Text("home")
-            }
+            MainScreen()
         }
         composable(Routes.Statistic.route) {
             StatisticScreen()

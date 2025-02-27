@@ -5,11 +5,14 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
@@ -25,13 +28,15 @@ fun ExpensesItem(
     image: Int,
     modifier: Modifier = Modifier,
 ) {
-    androidx.compose.material.Card(
+    Card(
         modifier
             .padding(dimensionResource(R.dimen.medium_dimen)).size(100.dp), shape = RoundedCornerShape(16.dp),
-        backgroundColor = colorResource(R.color.color_9)
+        colors = CardDefaults.cardColors(
+            containerColor = colorResource(R.color.color_9),
+        ),
     ) {
         Column(
-            modifier = modifier
+            modifier = modifier.align(Alignment.CenterHorizontally)
                 .padding(vertical = (dimensionResource(R.dimen.medium_dimen))),
             verticalArrangement = Arrangement.Center,
         ) {
