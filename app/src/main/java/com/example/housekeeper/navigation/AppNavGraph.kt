@@ -9,6 +9,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.housekeeper.presentation.plan.PlaningScreen
 import com.example.housekeeper.presentation.setting.SettingsScreen
+import com.example.housekeeper.presentation.statistic.StatisticScreen
 
 @Composable
 fun AppNavGraph(
@@ -19,22 +20,18 @@ fun AppNavGraph(
         navController = navController,
         startDestination = "home"
     ) {
-
         composable(Routes.Home.route) {
             Box(modifier = modifier) {
                 Text("home")
             }
         }
-
         composable(Routes.Statistic.route) {
-            SettingsScreen()
+            StatisticScreen()
         }
-
         composable(Routes.Setting.route) {
             SettingsScreen()
         }
-
-        composable(Routes.Setting.route) {
+        composable(Routes.Planing.route) {
             PlaningScreen()
         }
     }

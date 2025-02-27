@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.housekeeper.domain.CategoryInteractor
 import com.example.housekeeper.domain.model.Expense
 import com.example.housekeeper.presentation.model.ChartModel
-import com.example.housekeeper.util.GRAPH_COLOR
+import com.example.housekeeper.util.Constants
 import kotlinx.coroutines.launch
 
 class StatisticViewModel(private val interactor: CategoryInteractor) : ViewModel() {
@@ -41,7 +41,7 @@ class StatisticViewModel(private val interactor: CategoryInteractor) : ViewModel
                 dateList.add(
                     ChartModel(
                         value = (list[i].sum / sum).toFloat(),
-                        color = GRAPH_COLOR[i % 10]
+                        color = Constants.GRAPH_COLOR[i % 10]
                     )
                 )
         }
