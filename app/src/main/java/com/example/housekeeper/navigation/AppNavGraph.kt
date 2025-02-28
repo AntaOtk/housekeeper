@@ -43,7 +43,9 @@ fun AppNavGraph(
         composable(Routes.AddTransaction.route) {
             AddTransactionScreen(
                 null,
-                null
+                null,
+                { navController.navigate(Routes.Home.route) },
+                modifier
             )
         }
 
@@ -62,7 +64,8 @@ fun AppNavGraph(
                 navBackStack ->
             AddTransactionScreen(
                 navBackStack.arguments?.getParcelable("accountItem"),
-                navBackStack.arguments?.getParcelable("categoryItem")
+                navBackStack.arguments?.getParcelable("categoryItem"),
+                { navController.navigate(Routes.Home.route) }
             )
         }
     }
