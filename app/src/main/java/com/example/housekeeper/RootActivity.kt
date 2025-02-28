@@ -1,5 +1,6 @@
 package com.example.housekeeper
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.Menu
 import androidx.activity.compose.setContent
@@ -17,6 +18,7 @@ class RootActivity : AppCompatActivity() {
     private var _binding: ActivityRootBinding? = null
     private val binding get() = _binding!!
 
+    @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 //        _binding = ActivityRootBinding.inflate(layoutInflater)
@@ -43,11 +45,12 @@ class RootActivity : AppCompatActivity() {
                 Scaffold(
                     bottomBar = {
                         BottomNavBar(navController = navController)
-                    }, content = { padding ->
-                        AppNavGraph(navController = navController)
                     }
-                )
+                ) {
+                    AppNavGraph(navController = navController)
+                }
             }
+
         }
     }
 
@@ -56,5 +59,6 @@ class RootActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.main_menu, menu)
         return true
     }
+
 
 }

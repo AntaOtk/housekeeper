@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
-import com.example.housekeeper.databinding.FragmentSettingBinding
 
 class SettingFragment : Fragment() {
 
@@ -16,7 +15,6 @@ class SettingFragment : Fragment() {
     ): View {
         return ComposeView(requireContext()).apply {
             setContent {
-                SettingsScreen()
             }
         }
     }

@@ -1,18 +1,18 @@
 package com.example.housekeeper.util
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AddShoppingCart
 import androidx.compose.material.icons.filled.BarChart
 import androidx.compose.material.icons.filled.CurrencyExchange
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.colorResource
 import com.example.housekeeper.R
 import com.example.housekeeper.data.bd.CategoryEntity
 import com.example.housekeeper.navigation.BottomNavItem
 import com.example.housekeeper.navigation.Routes
-import com.example.housekeeper.presentation.model.ChartModel
 
 object Constants {
+    const val accountTransferData = "data_account"
     val BottomNavItems = listOf(
         BottomNavItem(
             label = "Home",
@@ -25,11 +25,15 @@ object Constants {
             route = Routes.Statistic.route
         ),
         BottomNavItem(
+            label = "Transaction",
+            icon = Icons.Filled.AddShoppingCart,
+            route = Routes.AddTransaction.route
+        ),
+        BottomNavItem(
             label = "Setting",
             icon = Icons.Filled.Settings,
             route = Routes.Setting.route
-        )
-
+        ),
     )
 
     val GRAPH_COLOR = listOf(
@@ -45,7 +49,7 @@ object Constants {
         Color.Blue,
     )
 
-    val  firstCategoryList = listOf(
+    val firstCategoryList = listOf(
         CategoryEntity(
             null,
             "home",

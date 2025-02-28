@@ -24,13 +24,16 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.housekeeper.R
-import com.example.housekeeper.compose.ExpensesItem
-import com.example.housekeeper.compose.SpendingItem
+import com.example.housekeeper.domain.model.Expense
+import com.example.housekeeper.presentation.main.compose.ExpensesItem
+import com.example.housekeeper.presentation.main.compose.SpendingItem
 import org.koin.androidx.compose.koinViewModel
 
 
 @Composable
-fun MainScreen() {
+fun MainScreen(
+    navigateToTransaction: (Expense?, Expense?) -> Unit,
+) {
     val viewModel: MainViewModel = koinViewModel()
     val modifier = Modifier
     viewModel.getAccounts()
@@ -65,7 +68,7 @@ fun MainScreen() {
                         .height(dimensionResource(R.dimen.small_dimen))
                 )
                 for (item in accounts.value)
-                    SpendingItem(item.name, item.sum ?: 0.0)
+                    SpendingItem(item)
             }
         }
         Spacer(
@@ -89,11 +92,11 @@ fun MainScreen() {
                 )
                 LazyVerticalGrid(
                     columns = GridCells.Fixed(3),
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.Center
                 ) {
                     items(categories.value) { item ->
-                        ExpensesItem(item.name, item.sum ?: 0.0, item.planingSum ?: 0.0, item.image)
+                        ExpensesItem(item, { arg1, arg2 -> navigateToTransaction(arg1, arg2) })
                     }
 
                 }
@@ -102,8 +105,9 @@ fun MainScreen() {
     }
 }
 
+
 @Preview
 @Composable
 fun ShowSpendingItem() {
-    MainScreen()
+    MainScreen(navigateToTransaction = { _, _ -> })
 }
