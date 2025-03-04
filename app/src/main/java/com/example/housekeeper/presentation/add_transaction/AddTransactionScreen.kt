@@ -46,7 +46,7 @@ fun AddTransactionScreen(
     if (category != null) {
         viewModel.setCategory(category)
     }
-    Column(modifier = modifier.fillMaxWidth()) {
+    Column(modifier = modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
         Button(
             modifier = modifier
                 .align(Alignment.End)
